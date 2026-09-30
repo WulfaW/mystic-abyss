@@ -1,36 +1,26 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🦇 Mystic Abyss II - Resmi Web Sitesi
 
-## Getting Started
+Bu proje, **The Mystic Abyss II** (8 kişilik online co-op dungeon roguelike) oyununun resmi tanıtım ve indirme sayfasıdır. Koyu fantezi (Dark Fantasy) ve Diablo 4 estetiğinden ilham alınarak baştan sona özel olarak tasarlanmıştır.
 
-First, run the development server:
+## 🔥 Özellikler
+- **Diablo 4 Tarzı Tasarım:** Kan kırmızısı sisler, taş dokular ve gotik CSS süslemeleri.
+- **3D Sınıf Kartları:** Özel çizilmiş 9 RPG ikonu ve fareyle üzerine gelindiğinde dönen CSS-3D sınıf kartları.
+- **Canlı Lobi Simülasyonu:** Sağ altta "Aktif Lobiler" (Battle.net tarzı) önizleme ekranı.
+- **Modern Teknoloji:** React, Next.js, Tailwind CSS ve Framer Motion ile kodlanmıştır.
+
+## 🛠️ Kurulum ve Geliştirme
+
+Projeyi kendi bilgisayarınızda çalıştırmak için:
 
 ```bash
+# Bağımlılıkları yükleyin
+npm install
+
+# Geliştirici sunucusunu başlatın
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Tarayıcınızda [http://localhost:3000](http://localhost:3000) adresini açarak siteyi görüntüleyebilirsiniz. Ana düzenlemeler `app/page.tsx` ve stiller `app/globals.css` içerisinden yapılmaktadır.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ⚔️ Katkıda Bulunma
+Bu repo tamamen geliştiriciye aittir. Resimleri, yazıları veya indirme linklerini kendi projenize göre özelleştirebilirsiniz. Karanlığa inerken bol şans!

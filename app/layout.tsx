@@ -5,7 +5,6 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'The Mystic Abyss II | Dungeon Roguelike',
   description: 'An 8-player online co-op dungeon roguelike. Descend 30 floors and face the Heart of the Abyss.',
-  generator: 'v0.app',
   icons: {
     icon: [
       {
@@ -47,3 +46,4 @@ export default function RootLayout({
     </html>
   )
 }
+
