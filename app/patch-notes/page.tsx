@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { ChevronLeft } from 'lucide-react'
 import { 
   GiDaemonSkull, GiCrossbow, GiDungeonGate, 
-  GiHarp, GiMagicSwirl, GiSoundWaves, GiMap,
+  GiHarp, GiMagicSwirl, GiSoundWaves, GiTreasureMap,
   GiSkeletalHand, GiPistolGun, GiFireBowl, GiHammerDrop, GiBookAura
 } from 'react-icons/gi'
 
@@ -99,7 +99,7 @@ const PATCHES = [
       {
         id: 'v1.2.1-harita',
         title: 'HARİTA VE DÜZELTMELER',
-        icon: GiMap,
+        icon: GiTreasureMap,
         color: 'text-gray-400',
         items: [
           'Teras korkulukları ve galeri köşeleri artık birbirine girmiyor (clipping düzeltildi).',
@@ -180,7 +180,7 @@ const PATCHES = [
       {
         id: 'v1.2-diger',
         title: 'DİĞER ÖZELLİKLER',
-        icon: GiMap,
+        icon: GiTreasureMap,
         color: 'text-blue-400',
         items: [
           'Eski nesil <b>Diablo tarzı yarı saydam harita</b> (M) eklendi.',
@@ -326,7 +326,7 @@ const PATCHES = [
       {
         id: 'v1.0-diger',
         title: 'DİĞER DÜZELTMELER',
-        icon: GiMap,
+        icon: GiTreasureMap,
         color: 'text-[#a89070]',
         items: [
           'Okçu sınıfı artık etraftaki vazoları kırabiliyor.',
