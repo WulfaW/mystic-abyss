@@ -21,11 +21,44 @@ const features = [
   { icon: Swords, title: 'PvP Arenası', desc: 'Kan Kolezyumu\'nda 2-8 kişilik Herkes Herkese veya Takım Savaşı modları seni bekliyor.' },
 ]
 
-const lobbies = [
-  { name: 'KANLI KATEDRAL', floor: 15, players: '4/8', diff: 'CEHENNEM' },
-  { name: 'THE ASHEN GATE', floor: 7, players: '7/8', diff: 'ZOR' },
-  { name: 'YERALTININ DİBİ', floor: 28, players: '2/8', diff: 'NORMAL' },
-]
+// Oyundaki herkese açık Steam (Spacewar) lobileri; kurucunun oyunu /api/lobbies'e bildirir
+type Lobby = {
+  id: string
+  name: string
+  players: number
+  max: number
+  state: 'lobi' | 'oyunda'
+  floor: number
+  mode: '' | 'ffa' | 'team'
+  oath: string
+  ver: string
+}
+
+function useLobbies() {
+  const [lobbies, setLobbies] = useState<Lobby[] | null>(null)
+  useEffect(() => {
+    let alive = true
+    const load = () =>
+      fetch('/api/lobbies', { cache: 'no-store' })
+        .then((r) => r.json())
+        .then((d) => alive && setLobbies(d.lobbies ?? []))
+        .catch(() => alive && setLobbies((l) => l ?? []))
+    load()
+    const t = setInterval(() => document.visibilityState === 'visible' && load(), 15000)
+    return () => {
+      alive = false
+      clearInterval(t)
+    }
+  }, [])
+  return lobbies
+}
+
+function lobbyTag(l: Lobby): [string, string] {
+  if (l.mode === 'ffa') return ['PVP · HERKES', '#c0392b']
+  if (l.mode === 'team') return ['PVP · TAKIM', '#c0392b']
+  if (l.oath && l.oath !== 'Yemin yok') return [l.oath.toLocaleUpperCase('tr'), '#e67e22']
+  return ['CO-OP', '#5a8a3a']
+}
 
 // Ateş kıvılcımları componenti
 function Embers() {
@@ -80,6 +113,8 @@ function FadeIn({ children, delay = 0 }: { children: React.ReactNode, delay?: nu
 export default function Page() {
   const [activeShot, setActiveShot] = useState(0)
   const [lobbyOpen, setLobbyOpen] = useState(true)
+  const lobbies = useLobbies()
+  const online = lobbies?.reduce((n, l) => n + l.players, 0) ?? 0
 
   return (
     <main className="min-h-screen overflow-x-hidden relative">
@@ -424,27 +459,46 @@ export default function Page() {
           onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = 'rgba(30,5,0,0.8)'}
           onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = 'transparent'}>
           <span className="text-xs uppercase tracking-widest" style={{ fontFamily: 'Cinzel, serif', color: '#c9973a' }}>
-            ◆ Aktif Lobiler
+            ◆ Aktif Lobiler{lobbies && lobbies.length > 0 ? ` (${lobbies.length})` : ''}
           </span>
           {lobbyOpen ? <ChevronDown size={14} style={{ color: '#5a3a1a' }} /> : <ChevronUp size={14} style={{ color: '#5a3a1a' }} />}
         </button>
         {lobbyOpen && (
           <div className="p-4 space-y-3 max-h-64 overflow-y-auto">
-            {lobbies.map(({ name, floor, players, diff }) => (
-              <div key={name} className="text-xs p-3" style={{ border: '1px solid #1a0a00', background: 'rgba(15,3,0,0.8)' }}>
-                <div className="flex justify-between items-center mb-1">
-                  <span style={{ fontFamily: 'Cinzel, serif', color: '#a07030', fontSize: '10px', letterSpacing: '0.1em' }}>{name}</span>
-                  <span style={{ color: diff === 'CEHENNEM' ? '#c0392b' : diff === 'ZOR' ? '#e67e22' : '#5a8a3a', fontSize: '10px' }}>
-                    [{diff}]
-                  </span>
+            {lobbies === null && (
+              <p className="text-center text-xs" style={{ color: '#4a3a2a' }}>Lobiler yükleniyor…</p>
+            )}
+            {lobbies?.length === 0 && (
+              <p className="text-center text-xs leading-relaxed" style={{ color: '#4a3a2a' }}>
+                Şu an açık lobi yok.<br />Oyunda Steam lobisi kur, burada görünsün.
+              </p>
+            )}
+            {lobbies?.map((l) => {
+              const [tag, col] = lobbyTag(l)
+              return (
+                <div key={l.id} className="text-xs p-3" style={{ border: '1px solid #1a0a00', background: 'rgba(15,3,0,0.8)' }}>
+                  <div className="flex justify-between items-center mb-1 gap-2">
+                    <span className="truncate" style={{ fontFamily: 'Cinzel, serif', color: '#a07030', fontSize: '10px', letterSpacing: '0.1em' }}>
+                      {l.name.toLocaleUpperCase('tr')}
+                    </span>
+                    <span className="shrink-0" style={{ color: col, fontSize: '10px' }}>[{tag}]</span>
+                  </div>
+                  <div className="flex justify-between" style={{ color: '#4a3a2a' }}>
+                    <span>
+                      {l.state === 'oyunda'
+                        ? (l.mode ? 'Arenada' : l.floor > 0 ? `Kat ${l.floor}` : 'Oyunda')
+                        : (l.players >= l.max ? 'Lobi dolu' : 'Lobide · katılınabilir')}
+                    </span>
+                    <span>{l.players}/{l.max} oyuncu</span>
+                  </div>
                 </div>
-                <div className="flex justify-between" style={{ color: '#4a3a2a' }}>
-                  <span>Kat {floor}</span>
-                  <span>{players} oyuncu</span>
-                </div>
-              </div>
-            ))}
-            <p className="text-center text-xs" style={{ color: '#2a1a0a', fontFamily: 'Cinzel, serif' }}>// önizleme verisi</p>
+              )
+            })}
+            {lobbies && lobbies.length > 0 && (
+              <p className="text-center text-xs" style={{ color: '#3a2a1a', fontFamily: 'Cinzel, serif' }}>
+                {online} oyuncu uçurumda · Steam
+              </p>
+            )}
           </div>
         )}
       </div>
