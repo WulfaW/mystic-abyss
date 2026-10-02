@@ -60,6 +60,112 @@ function lobbyTag(l: Lobby): [string, string] {
   return ['CO-OP', '#5a8a3a']
 }
 
+// ── LİDERLİK TABLOSU ── oyun biten koşuları /api/leaderboard'a bildirir
+type LbEntry = { rank: number; name: string; cls: string; floor: number; kills: number; time: number; won: boolean; party: number; oath: string }
+const CLASS_NAMES: Record<string, string> = {
+  warrior: 'Savaşçı', rogue: 'Düzenbaz', mage: 'Büyücü', priest: 'Ruhban', paladin: 'Paladin', archer: 'Okçu',
+  bard: 'Ozan', gunslinger: 'Silahşör', warlock: 'Cinci', necromancer: 'Nekromant',
+}
+// oyunla aynı anahtarlar: gün yerel tarih, hafta pazartesiden başlayan UTC hafta sırası
+function dayKey() {
+  const d = new Date()
+  return `d-${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+}
+function weekKey() {
+  return `w-${Math.floor((Math.floor(Date.now() / 86400000) + 3) / 7)}`
+}
+const fmtTime = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`
+
+function Leaderboard() {
+  const tabs = [
+    { id: 'all', label: 'Tüm Zamanlar' },
+    { id: weekKey(), label: 'Haftalık Meydan Okuma' },
+    { id: dayKey(), label: 'Günün Uçurumu' },
+  ]
+  const [tab, setTab] = useState(0)
+  const [data, setData] = useState<Record<string, LbEntry[]> | null>(null)
+  useEffect(() => {
+    let alive = true
+    const load = () =>
+      fetch(`/api/leaderboard?boards=${tabs.map((t) => t.id).join(',')}&n=15`, { cache: 'no-store' })
+        .then((r) => r.json())
+        .then((d) => alive && setData(d.boards ?? {}))
+        .catch(() => alive && setData((x) => x ?? {}))
+    load()
+    const t = setInterval(() => document.visibilityState === 'visible' && load(), 60000)
+    return () => {
+      alive = false
+      clearInterval(t)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  const rows = data?.[tabs[tab].id] ?? []
+  return (
+    <section id="liderlik" className="py-20 px-4 max-w-4xl mx-auto relative z-10">
+      <FadeIn>
+        <h2 className="text-3xl md:text-4xl uppercase tracking-widest mb-3 text-center" style={{ fontFamily: 'Cinzel, serif', color: '#e8d5b0' }}>
+          Liderlik Tablosu
+        </h2>
+        <p className="text-sm text-center mb-8" style={{ color: '#6a5a4a' }}>
+          En derine inenler. Eşit derinlikte daha hızlı inen önde. Haftalık meydan okumada herkes aynı haritada, aynı yeminle iner.
+        </p>
+        <div className="flex flex-wrap justify-center gap-2 mb-6">
+          {tabs.map((t, i) => (
+            <button key={t.id} onClick={() => setTab(i)}
+              className="text-xs uppercase tracking-widest px-4 py-2 transition-colors"
+              style={{
+                fontFamily: 'Cinzel, serif',
+                color: i === tab ? '#e8d5b0' : '#6a5a4a',
+                border: `1px solid ${i === tab ? '#8a2a1a' : '#2a1200'}`,
+                background: i === tab ? 'rgba(60,8,0,0.6)' : 'rgba(10,3,0,0.6)',
+              }}>
+              {t.label}
+            </button>
+          ))}
+        </div>
+        <div style={{ border: '1px solid #2a1200', background: 'rgba(8,2,0,0.85)' }}>
+          {data === null && <p className="text-center text-sm py-10" style={{ color: '#4a3a2a' }}>Yükleniyor…</p>}
+          {data !== null && rows.length === 0 && (
+            <p className="text-center text-sm py-10" style={{ color: '#4a3a2a' }}>Henüz kimse bu tabloya adını yazdıramadı. İlk sen ol.</p>
+          )}
+          {rows.length > 0 && (
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="text-xs uppercase tracking-widest" style={{ fontFamily: 'Cinzel, serif', color: '#8a6a3a', borderBottom: '1px solid #2a1200' }}>
+                    <th className="py-3 px-3 text-left">#</th>
+                    <th className="py-3 px-3 text-left">Kahraman</th>
+                    <th className="py-3 px-3 text-left hidden sm:table-cell">Sınıf</th>
+                    <th className="py-3 px-3 text-right">Kat</th>
+                    <th className="py-3 px-3 text-right hidden sm:table-cell">Öldürme</th>
+                    <th className="py-3 px-3 text-right">Süre</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {rows.map((r) => (
+                    <tr key={r.rank + r.name} style={{ borderBottom: '1px solid #140600', color: r.rank <= 3 ? '#e8d5b0' : '#a89070' }}>
+                      <td className="py-2 px-3" style={{ color: ['#ffd36b', '#d8d8e0', '#d08a4a'][r.rank - 1] ?? '#5a4a3a', fontFamily: 'Cinzel, serif' }}>{r.rank}</td>
+                      <td className="py-2 px-3 truncate max-w-[180px]">
+                        {r.name}
+                        {r.won && <span className="ml-2 text-xs" style={{ color: '#c9973a' }}>★ zafer</span>}
+                        {r.party > 1 && <span className="ml-2 text-xs" style={{ color: '#5a4a3a' }}>{r.party} kişi</span>}
+                      </td>
+                      <td className="py-2 px-3 hidden sm:table-cell" style={{ color: '#7a6a5a' }}>{CLASS_NAMES[r.cls] ?? r.cls}</td>
+                      <td className="py-2 px-3 text-right" style={{ color: '#c0392b', fontFamily: 'Cinzel, serif' }}>{r.floor}</td>
+                      <td className="py-2 px-3 text-right hidden sm:table-cell" style={{ color: '#7a6a5a' }}>{r.kills}</td>
+                      <td className="py-2 px-3 text-right" style={{ color: '#7a6a5a' }}>{fmtTime(r.time)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+      </FadeIn>
+    </section>
+  )
+}
+
 // Ateş kıvılcımları componenti
 function Embers() {
   const [embers, setEmbers] = useState<any[]>([])
@@ -135,6 +241,7 @@ export default function Page() {
           {[
             { label: 'Sınıflar', href: '#siniflar' },
             { label: 'Özellikler', href: '#ozellikler' },
+            { label: 'Liderlik', href: '#liderlik' },
             { label: 'Yama Notları', href: '/patch-notes' },
             { label: 'Hakkında', href: '#hakkinda' },
           ].map(({ label, href }) => (
@@ -406,6 +513,10 @@ export default function Page() {
           ))}
         </div>
       </section>
+
+      <div className="gold-divider" />
+
+      <Leaderboard />
 
       <div className="gold-divider" />
 
