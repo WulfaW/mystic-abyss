@@ -135,6 +135,7 @@ export default function Page() {
           {[
             { label: 'Sınıflar', href: '#siniflar' },
             { label: 'Özellikler', href: '#ozellikler' },
+            { label: 'Yama Notları', href: '/patch-notes' },
             { label: 'Hakkında', href: '#hakkinda' },
           ].map(({ label, href }) => (
             <li key={label}>
