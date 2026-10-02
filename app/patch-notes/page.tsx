@@ -6,6 +6,7 @@ import {
   GiDaemonSkull, GiCrossbow, GiDungeonGate, 
   GiHarp, GiMagicSwirl, GiSoundWaves, GiTreasureMap,
   GiSkeletalHand, GiPistolGun, GiFireBowl, GiHammerDrop, GiBookAura
+, GiBroadsword
 } from 'react-icons/gi'
 
 const PATCHES = [
