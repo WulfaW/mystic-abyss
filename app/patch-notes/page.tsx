@@ -109,9 +109,7 @@ const PATCHES = [
       }
     ]
   }
-]
-
-
+,
   {
     id: 'v1.2',
     title: 'YAMA 1.2',
@@ -397,7 +395,9 @@ const PATCHES = [
       }
     ]
   }
-,
+
+]
+
 export default function PatchNotes() {
   const [activeSection, setActiveSection] = useState('v1.3')
 
