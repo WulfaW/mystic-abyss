@@ -258,6 +258,87 @@ const PATCHES = [
     ]
   }
 ,
+
+  {
+    id: 'v1.0',
+    title: 'YAMA 1.0',
+    subtitle: 'Mystic Abyss II Online 🎻🔥',
+    date: 'İlk Çıkış Sürümü',
+    mandatory: true,
+    intro: 'Ve macera resmen başlıyor! İlk büyük kararlı sürüm yayında. Çökmeler giderildi, Ozan sınıfı arenaya adım attı ve uçurumun gerçek yüzü korozyonla kendini gösterdi...',
+    sections: [
+      {
+        id: 'v1.0-ram',
+        title: '🛠️ RAM DÜZELTMESİ',
+        icon: GiHammerDrop,
+        color: 'text-gray-400',
+        items: [
+          'Oyunun RAM\'i şişirip çökmesine yol açabilecek karmaşık efekt ve malzeme (material) sorunu tamamen düzeltildi.',
+          'Eğer bu sorunu tekrar yaşarsanız, şu klasördeki en yeni <code class="bg-[#1a0a0a] px-1 text-xs text-[#a89070]">godot.log</code> dosyasını bize iletin: <br/> <code class="bg-[#1a0a0a] px-2 py-1 text-[10px] text-[#a89070] break-all block mt-1">%APPDATA%\Godot\app_userdata\Mystic Abyss II Online\logs</code>'
+        ]
+      },
+      {
+        id: 'v1.0-ozan',
+        title: 'YENİ SINIF: OZAN 🎻',
+        icon: GiHarp,
+        color: 'text-purple-400',
+        items: [
+          '<strong class="text-[#e8d5b0]">Destek Sınıfı:</strong> Saz çalan yepyeni bir destek sınıfı. Sol tık ile önüne doğrudan ses dalgası yollar.',
+          '<strong class="text-[#e8d5b0]">Pasif Müzik:</strong> Yakındaki dostlar daha sert vurur ve yavaşça iyileşir.',
+          '<strong class="text-[#e8d5b0]">Q - Cesaret Türküsü:</strong> Tüm gruba ekstra hasar ve saldırı hızı sağlar.',
+          '<strong class="text-[#e8d5b0]">E - Şifa Ezgisi:</strong> Dostlarınızı anında iyileştirir.',
+          '<strong class="text-[#e8d5b0]">R - Destan (Ulti):</strong> Tüm gruba devasa bir güçlendirme sağlar.'
+        ]
+      },
+      {
+        id: 'v1.0-tuslar',
+        title: 'YENİ TUŞLAR VE MEKANİKLER ⚔️',
+        icon: GiBroadsword,
+        color: 'text-yellow-500',
+        items: [
+          '<strong class="text-[#c0392b]">(G) Yakın Darbe:</strong> Tekme, bıçak veya kalkanla yakın dövüş saldırısı. (Okçunun artık yakınına girenleri uzaklaştıracak bir yakın savunması var!)',
+          '<strong class="text-[#c0392b]">(F5) Üçüncü Şahıs Kamera (TPS):</strong> Artık oyunu TPS oynayabilirsiniz. Koşarken kamera uzaklaşır, nişan alırken omuza yaklaşarak sinematik bir his verir.',
+          '<strong class="text-[#c0392b]">(C) Sınıf Değiştir:</strong> Arenada maçın akışını bozmadan hızlıca sınıf değiştirebilirsiniz.'
+        ]
+      },
+      {
+        id: 'v1.0-guc-korozyon',
+        title: 'ANLIK GÜÇLER VE KOROZYON ⚡🧠',
+        icon: GiMagicSwirl,
+        color: 'text-blue-400',
+        items: [
+          '<strong class="text-[#e8d5b0]">Anlık Küreler:</strong> Katlarda artık parlayan güç küreleri beliriyor: <span class="italic text-[#c0392b]">Kan Çılgınlığı, Uçurum Gücü, Rüzgâr Rünü, Kutsal Kalkan, Gölge Pelerini, Ruh Küresi</span>. Herkes kendi küresini ayrı ayrı alır.',
+          '<strong class="text-[#e8d5b0]">Korozyon (Eski adı: Yozlaşma):</strong> Korozyon seviyeniz arttıkça kafanızda fısıltılar duymaya başlarsınız. Sahte düşman silüetleri görürsünüz ve ekran bozulmaya başlar.',
+          'Korozyon arttıkça <b>hasarınız artar ancak canınız azalır</b>. Meşale ışığında durmak korozyonu yavaşça temizler.'
+        ]
+      },
+      {
+        id: 'v1.0-bolumler',
+        title: 'BÖLÜMLER VE ATMOSFER 🏰',
+        icon: GiDungeonGate,
+        color: 'text-orange-500',
+        items: [
+          'Yüksek tavanlı devasa salonlar eklendi: Galeri, görkemli avizeler ve etkileyici ışık huzmeleri.',
+          'Zindanlara basamaklı kürsüler yerleştirildi.',
+          'Lav, kan ve boşluk ateşi çukurları ile közlü zemin çatlakları eklendi.',
+          '<b>Gökyüzü Odaları:</b> Artık çok daha sık karşınıza çıkacak. İçeri girdiğinizde üzerinize sihirli yıldız tozu yağar.',
+          '<b>Işıklandırma Yenilendi:</b> Meşale ışığı artık duvarlardan çok daha gerçekçi sekiyor. Oyun eskiye kıyasla biraz daha aydınlık ve oynanabilir hale geldi.'
+        ]
+      },
+      {
+        id: 'v1.0-diger',
+        title: 'DİĞER DÜZELTMELER',
+        icon: GiMap,
+        color: 'text-[#a89070]',
+        items: [
+          'Okçu sınıfı artık etraftaki vazoları kırabiliyor.',
+          'Özellik puanı ekranındaki yazıların üst üste binme hatası düzeltildi.',
+          'Sohbet penceresi ekranın sağ tarafına taşındı.'
+        ]
+      }
+    ]
+  }
+,
 export default function PatchNotes() {
   const [activeSection, setActiveSection] = useState('v1.3')
 
