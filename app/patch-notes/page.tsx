@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react'
 import { ChevronLeft } from 'lucide-react'
 import { 
   GiDaemonSkull, GiCrossbow, GiDungeonGate, 
-  GiHarp, GiMagicSwirl, GiSoundWaves, GiMap
+  GiHarp, GiMagicSwirl, GiSoundWaves, GiMap,
+  GiSkeletalHand, GiPistolGun, GiFireBowl, GiHammerDrop
 } from 'react-icons/gi'
 
 const PATCHES = [
@@ -110,6 +111,92 @@ const PATCHES = [
   }
 ]
 
+
+  {
+    id: 'v1.2',
+    title: 'YAMA 1.2',
+    subtitle: 'Mystic Abyss II Online 💀',
+    date: 'Geçmiş Güncelleme',
+    mandatory: false,
+    intro: 'Ölüm artık bir son değil, sadece bir başlangıç. Nekromant uçurumun karanlık güçlerini kontrol etmek için uyandı. Muhafızlar eskisinden çok daha acımasız ve korkutucu...',
+    sections: [
+      {
+        id: 'v1.2-nekromant',
+        title: 'YENİ SINIF: NEKROMANT',
+        icon: GiSkeletalHand,
+        color: 'text-green-500',
+        items: [
+          '<strong class="text-[#e8d5b0]">Kanlı Tırpan:</strong> Düşmanları tırpanla biçer, her isabetli vuruş size can verir.',
+          '<strong class="text-[#e8d5b0]">Q - Kemik Ordusu:</strong> Cesetlerden iskelet askerler kaldırır.',
+          '<strong class="text-[#e8d5b0]">E - Ceset Patlaması:</strong> Yerdeki cesetleri patlatarak alan hasarı verir.',
+          '<strong class="text-[#e8d5b0]">R - Ölüler Ordusu (Ulti):</strong> Çevrenize 6 iskelet ve devasa bir Kemik Golemi çağırır!'
+        ]
+      },
+      {
+        id: 'v1.2-siniflar',
+        title: 'SINIF GÜNCELLEMELERİ',
+        icon: GiPistolGun,
+        color: 'text-[#a89070]',
+        items: [
+          '<strong class="text-[#c0392b]">Silahşör:</strong> Altıpatlar baştan yapıldı, birinci şahısta düzgün görünüyor. 7 mermi alır ve kendiliğinden dolar. Havada vurulan bomba elementini saçar. Yeni ulti <b>Ölüm Gözü:</b> Hedefleri işaretle, sırayla kafadan vur!',
+          '<strong class="text-[#e8d5b0]">Ozan:</strong> Saz artık gerçek saz gibi tutuluyor.',
+          '<strong class="text-[#e8d5b0]">Paladin:</strong> Q bekleme süresi 6→4 sn, E bekleme süresi 12→9 sn.'
+        ]
+      },
+      {
+        id: 'v1.2-muhafizlar',
+        title: 'MUHAFIZLAR (BOSSLAR)',
+        icon: GiDaemonSkull,
+        color: 'text-red-500',
+        items: [
+          'Hepsi tamamen şeytani yaratıklar olarak baştan tasarlandı.',
+          'Canları yaklaşık <b>3,5 kat</b> artırıldı ve evre geçişinde kısa dokunulmazlık kazandılar.',
+          'Uzaktan oynayan oyuncuları zincirle/büyüyle çeker, üstüne atlar ve ölümcül mermi sarmalı açarlar.',
+          'Golem ve Kasap muhafızları artık üzerinize devasa kayalar fırlatıyor ve amansızca hücum ediyor.',
+          '<strong class="text-[#c0392b]">Gizli Muhafızlar:</strong> Baphomet, Mefisto, Lucifer, Şeytan... Onlarla yüzleşmenin koşullarını bulmak size kalmış 👀'
+        ]
+      },
+      {
+        id: 'v1.2-mekanikler',
+        title: 'YENİ MEKANİKLER',
+        icon: GiFireBowl,
+        color: 'text-orange-500',
+        items: [
+          '<strong class="text-[#c0392b]">Yedi Ölümcül Günah:</strong> Mini muhafız odasına girince kapılar kilitlenir. Eğer yenerseniz ödül alır ve <b>Şeytanla Anlaşma</b> (kalıcı can karşılığı efsanevi ganimet) yapabilirsiniz.',
+          '<strong class="text-[#e8d5b0]">Zorlu Odalar:</strong> Daha güçlü düşmanlar ve bozuk müzik barındırır, temizleyince devasa ödüller verir.',
+          '<strong class="text-[#e8d5b0]">Korozyon Yenilendi:</strong> Korozyon artık çok önemli. Daha hızlı birikir. Evreler ilerledikçe hasar, kritik, altın ve ganimet şansınız artar. 100 seviyesine ulaştığınızda <b>Uçurum Formuna</b> dönüşürsünüz!'
+        ]
+      },
+      {
+        id: 'v1.2-modeller',
+        title: 'MODELLER VE PERFORMANS',
+        icon: GiHammerDrop,
+        color: 'text-gray-400',
+        items: [
+          'Kasap, Golem, İğrenç, Hortlak, Mimik, Balçık, Gulyabani ve Emekleyen Ceset tamamen yeniden modellendi.',
+          'Sandık, tüccar, sunak, pınar, kürsü, merdiven ve küplerin grafikleri yeniden yapıldı.',
+          'Mimik artık gerçek sandıktan kesinlikle ayırt edilemiyor, her açtığınız sandıkta tetikte olun.',
+          '<b>Performans:</b> Aynı tür düşmanlar artık model paylaşımı yapıyor. Bu sayede düşman başına ~%70 daha az bellek tüketimi sağlandı!'
+        ]
+      },
+      {
+        id: 'v1.2-diger',
+        title: 'DİĞER ÖZELLİKLER',
+        icon: GiMap,
+        color: 'text-blue-400',
+        items: [
+          'Eski nesil <b>Diablo tarzı yarı saydam harita</b> (M) eklendi.',
+          'Yüksek salonlarda artık yürünebilir üst katlar, taş köprüler ve merdivenler var.',
+          'Diken tuzakları artık odaya girdiğiniz anda aktifleşiyor ve uyanıyor.',
+          'Müzik odadan odaya atmosfere göre değişiyor.',
+          'Silahınızı <b>(X)</b> tuşuyla eritebilir veya tüccara satabilirsiniz.',
+          '<b>Çoklu Kayıt Sistemi:</b> Artık her sınıfın kendine ait ayrı bir ilerleme kaydı var.',
+          '10+ yepyeni başarım eklendi.'
+        ]
+      }
+    ]
+  }
+,
 export default function PatchNotes() {
   const [activeSection, setActiveSection] = useState('v1.3')
 
