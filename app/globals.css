@@ -16,7 +16,6 @@
     color: #c8b89a;
     font-family: 'EB Garamond', Georgia, serif;
     min-height: 100vh;
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23c0392b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4v20h16V7h-3l-2.5-3z"/><path d="M12 11v8"/><path d="M9 15h6"/></svg>') 12 12, auto;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -26,7 +25,6 @@
   }
 
   a, button {
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23e74c3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>') 12 12, pointer;
     color: #c0392b;
     text-decoration: none;
     transition: color 0.2s;
@@ -187,3 +185,4 @@
 .preserve-3d { transform-style: preserve-3d; }
 .backface-hidden { backface-visibility: hidden; }
 .rotate-y-180 { transform: rotateY(180deg); }
+

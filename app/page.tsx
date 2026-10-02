@@ -1,9 +1,10 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { ChevronDown, ChevronUp, Download, Swords, Users, Skull, Zap } from 'lucide-react'
 import { GiBroadsword, GiDaggers, GiSpellBook, GiHolySymbol, GiShield, GiBowArrow, GiHarp, GiMusket, GiDaemonSkull } from 'react-icons/gi'
 import { motion } from 'framer-motion'
+import { sendFeedbackToDiscord } from './actions'
 
 const itchUrl = 'https://arno4436.itch.io/the-mystic-abyys-2'
 
@@ -115,6 +116,21 @@ export default function Page() {
   const [lobbyOpen, setLobbyOpen] = useState(true)
   const lobbies = useLobbies()
   const online = lobbies?.reduce((n, l) => n + l.players, 0) ?? 0
+  const [feedbackStatus, setFeedbackStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const formRef = useRef<HTMLFormElement>(null)
+
+  async function handleFeedback(formData: FormData) {
+    setFeedbackStatus('loading')
+    const res = await sendFeedbackToDiscord(formData)
+    if (res.error) {
+      setFeedbackStatus('error')
+    } else {
+      setFeedbackStatus('success')
+      formRef.current?.reset()
+      setTimeout(() => setFeedbackStatus('idle'), 5000)
+    }
+  }
+ (feat: add discord webhook feedback form)
 
   return (
     <main className="min-h-screen overflow-x-hidden relative">
@@ -436,6 +452,50 @@ export default function Page() {
         </FadeIn>
       </section>
 
+      {/* ── GERİ BİLDİRİM (FEEDBACK) ── */}
+      <section className="py-20 px-4 max-w-2xl mx-auto text-center relative z-10">
+        <FadeIn>
+          <div className="stone-border p-8" style={{ background: 'rgba(10,2,0,0.85)', boxShadow: '0 0 40px rgba(100,0,0,0.1)' }}>
+            <h2 className="text-2xl uppercase tracking-widest mb-2 glow-red" style={{ fontFamily: 'Cinzel, serif', color: '#e8d5b0' }}>
+              Uçuruma Seslen
+            </h2>
+            <p className="text-sm mb-8" style={{ color: '#8a7060' }}>
+              Oyun hakkındaki fikirlerinizi, bulduğunuz hataları (bug) veya önerilerinizi doğrudan geliştirici ekibe iletin.
+            </p>
+
+            <form ref={formRef} action={handleFeedback} className="flex flex-col gap-4 text-left">
+              <div>
+                <label className="block text-xs uppercase tracking-widest mb-2" style={{ fontFamily: 'Cinzel, serif', color: '#a89070' }}>İsminiz (İsteğe Bağlı)</label>
+                <input type="text" name="name" 
+                  className="w-full bg-black/50 border border-[#3a1a0a] rounded px-4 py-2 text-sm text-[#e8d5b0] focus:outline-none focus:border-[#c0392b] transition-colors"
+                  placeholder="Gezgin Ruh"
+                />
+              </div>
+              <div>
+                <label className="block text-xs uppercase tracking-widest mb-2" style={{ fontFamily: 'Cinzel, serif', color: '#a89070' }}>Mesajınız *</label>
+                <textarea name="message" required rows={4}
+                  className="w-full bg-black/50 border border-[#3a1a0a] rounded px-4 py-2 text-sm text-[#e8d5b0] focus:outline-none focus:border-[#c0392b] transition-colors resize-none"
+                  placeholder="Zindanın 15. katında bir duvarın içinden geçebiliyorum..."
+                ></textarea>
+              </div>
+
+              <button type="submit" disabled={feedbackStatus === 'loading'}
+                className="diablo-btn diablo-btn-primary w-full mt-4 flex justify-center items-center h-12"
+                style={{ opacity: feedbackStatus === 'loading' ? 0.7 : 1 }}>
+                {feedbackStatus === 'loading' ? 'GÖNDERİLİYOR...' : 'MESAJI GÖNDER'}
+              </button>
+
+              {feedbackStatus === 'success' && (
+                <p className="text-center text-xs mt-2 text-green-500" style={{ fontFamily: 'Cinzel, serif' }}>Mesajınız karanlığın içinden başarıyla iletildi!</p>
+              )}
+              {feedbackStatus === 'error' && (
+                <p className="text-center text-xs mt-2 text-red-500" style={{ fontFamily: 'Cinzel, serif' }}>Bağlantı koptu, mesaj iletilemedi.</p>
+              )}
+            </form>
+          </div>
+        </FadeIn>
+      </section>
+
       {/* ── FOOTER ── */}
       <footer className="py-12 text-center relative z-10" style={{ borderTop: '1px solid #1a0a00' }}>
         <p className="text-xs tracking-widest uppercase mb-2" style={{ fontFamily: 'Cinzel, serif', color: '#3a2a1a' }}>
@@ -506,3 +566,4 @@ export default function Page() {
     </main>
   )
 }
+
