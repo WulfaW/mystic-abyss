@@ -1,12 +1,40 @@
 'use client'
 
+import { useRef, useState } from 'react'
 import { GiHarp, GiDaemonSkull, GiDungeonGate, GiShield } from 'react-icons/gi'
+import html2canvas from 'html2canvas'
 
 export default function PatchGenerator() {
+  const patchRef = useRef<HTMLDivElement>(null)
+  const [downloading, setDownloading] = useState(false)
+
+  const downloadImage = async () => {
+    if (!patchRef.current) return
+    setDownloading(true)
+    try {
+      const canvas = await html2canvas(patchRef.current, {
+        scale: 2, // Yüksek çözünürlük için
+        backgroundColor: '#050000',
+        useCORS: true
+      })
+      
+      const image = canvas.toDataURL("image/png", 1.0)
+      const link = document.createElement('a')
+      link.download = 'yama-ozeti.png'
+      link.href = image
+      link.click()
+    } catch (err) {
+      console.error("Resim oluşturulamadı", err)
+    }
+    setDownloading(false)
+  }
+
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center p-8">
+    <div className="min-h-screen bg-[#050302] flex items-center justify-center p-8 relative">
+      
       {/* SADECE BU KUTUNUN EKRAN GÖRÜNTÜSÜ ALINACAK */}
       <div 
+        ref={patchRef}
         className="w-[800px] h-[450px] relative overflow-hidden flex flex-col"
         style={{
           background: 'linear-gradient(135deg, #0a0202 0%, #150505 100%)',
@@ -20,10 +48,18 @@ export default function PatchGenerator() {
         {/* HEADER */}
         <div className="px-10 py-5 border-b border-[#3a1a0a] flex justify-between items-center bg-black/50 z-10">
           <div>
-            <h1 className="text-4xl text-[#e8d5b0] font-bold m-0 leading-none drop-shadow-[0_0_10px_rgba(200,0,0,0.3)]" style={{ fontFamily: 'Cinzel, serif' }}>
+            <h1 
+              contentEditable 
+              suppressContentEditableWarning
+              className="text-4xl text-[#e8d5b0] font-bold m-0 leading-none drop-shadow-[0_0_10px_rgba(200,0,0,0.3)] outline-none focus:bg-white/10" 
+              style={{ fontFamily: 'Cinzel, serif' }}>
               YAMA 1.2.1
             </h1>
-            <p className="text-[#c0392b] tracking-widest text-xs mt-2 m-0 uppercase" style={{ fontFamily: 'Cinzel, serif' }}>
+            <p 
+              contentEditable
+              suppressContentEditableWarning
+              className="text-[#c0392b] tracking-widest text-xs mt-2 m-0 uppercase outline-none focus:bg-white/10" 
+              style={{ fontFamily: 'Cinzel, serif' }}>
               Mystic Abyss II Online
             </p>
           </div>
@@ -50,7 +86,7 @@ export default function PatchGenerator() {
                   <div className="w-14 h-14 rounded-full border-2 border-green-600 bg-black flex justify-center items-center text-green-500 shadow-[0_4px_10px_rgba(0,0,0,0.5)]">
                     <GiHarp size={30} />
                   </div>
-                  <span className="text-[11px] tracking-widest text-[#a89070] uppercase">Ozan</span>
+                  <span contentEditable suppressContentEditableWarning className="text-[11px] tracking-widest text-[#a89070] uppercase outline-none focus:bg-white/10">Ozan</span>
                 </div>
               </div>
             </div>
@@ -65,7 +101,7 @@ export default function PatchGenerator() {
                   <div className="w-14 h-14 rounded-full border-2 border-[#c0392b] bg-black flex justify-center items-center text-[#c0392b] shadow-[0_4px_10px_rgba(0,0,0,0.5)]">
                     <GiShield size={30} />
                   </div>
-                  <span className="text-[11px] tracking-widest text-[#a89070] uppercase">S. Marşı</span>
+                  <span contentEditable suppressContentEditableWarning className="text-[11px] tracking-widest text-[#a89070] uppercase outline-none focus:bg-white/10">S. Marşı</span>
                 </div>
               </div>
             </div>
@@ -85,13 +121,13 @@ export default function PatchGenerator() {
                   <div className="w-14 h-14 rounded-full border-2 border-yellow-600 bg-black flex justify-center items-center text-yellow-500 shadow-[0_4px_10px_rgba(0,0,0,0.5)]">
                     <GiDaemonSkull size={30} />
                   </div>
-                  <span className="text-[11px] tracking-widest text-[#a89070] uppercase">Nekromant</span>
+                  <span contentEditable suppressContentEditableWarning className="text-[11px] tracking-widest text-[#a89070] uppercase outline-none focus:bg-white/10">Nekromant</span>
                 </div>
                 <div className="flex flex-col items-center gap-2">
                   <div className="w-14 h-14 rounded-full border-2 border-yellow-600 bg-black flex justify-center items-center text-yellow-500 shadow-[0_4px_10px_rgba(0,0,0,0.5)]">
                     <GiDungeonGate size={30} />
                   </div>
-                  <span className="text-[11px] tracking-widest text-[#a89070] uppercase">Harita</span>
+                  <span contentEditable suppressContentEditableWarning className="text-[11px] tracking-widest text-[#a89070] uppercase outline-none focus:bg-white/10">Harita</span>
                 </div>
               </div>
             </div>
@@ -101,10 +137,13 @@ export default function PatchGenerator() {
               <h3 className="text-[#e8d5b0] text-sm tracking-widest mb-4 flex items-center gap-2" style={{ fontFamily: 'Cinzel, serif' }}>
                 <span className="text-blue-400 text-xl">✦</span> SİSTEM
               </h3>
-              <div className="bg-black/40 border border-[#3a1a0a] p-4 rounded text-xs text-[#a89070] leading-relaxed">
-                Müzik geçişleri yumuşatıldı.<br/>
-                Teras korkulukları ve harita çarpışma hataları (clipping) düzeltildi.<br/>
-                Uçurumun derinlikleri artık çok daha acımasız...
+              <div 
+                contentEditable 
+                suppressContentEditableWarning
+                className="bg-black/40 border border-[#3a1a0a] p-4 rounded text-xs text-[#a89070] leading-relaxed outline-none focus:bg-white/10 whitespace-pre-wrap">
+Müzik geçişleri yumuşatıldı.
+Teras korkulukları ve harita çarpışma hataları (clipping) düzeltildi.
+Uçurumun derinlikleri artık çok daha acımasız...
               </div>
             </div>
 
@@ -117,13 +156,26 @@ export default function PatchGenerator() {
         </div>
       </div>
       
-      <div className="ml-8 text-[#a89070] text-sm max-w-xs">
-        <p className="mb-4 text-white font-bold">Nasıl Kullanılır?</p>
-        <ol className="list-decimal pl-4 space-y-2">
-          <li>Klavyeden <kbd className="bg-gray-800 px-2 py-1 rounded text-xs">Win + Shift + S</kbd> tuşlarına bas.</li>
-          <li>Soldaki çerçevenin resmini çek.</li>
-          <li>Resmi Discohook'a (veya Discord'a) yapıştır!</li>
-        </ol>
+      {/* SIDEBAR - CONTROLS */}
+      <div className="ml-12 text-[#a89070] text-sm flex flex-col gap-6 max-w-[250px]">
+        
+        <div className="stone-border p-5 bg-black/80">
+          <h3 className="text-[#e8d5b0] font-bold mb-2 uppercase tracking-widest text-xs" style={{ fontFamily: 'Cinzel, serif' }}>
+            Nasıl Düzenlenir?
+          </h3>
+          <p className="text-xs text-[#8a7060] leading-relaxed">
+            Resmin üzerindeki tüm yazılar <b>tıklanabilir ve düzenlenebilir</b> durumdadır. "YAMA 1.2.1" yazısına veya açıklamalara tıklayıp klavyeyle silebilir ve istediğinizi yazabilirsiniz.
+          </p>
+        </div>
+
+        <button 
+          onClick={downloadImage}
+          disabled={downloading}
+          className="diablo-btn diablo-btn-primary w-full py-4 text-center tracking-widest uppercase flex justify-center items-center"
+        >
+          {downloading ? 'HAZIRLANIYOR...' : 'RESMİ İNDİR'}
+        </button>
+
       </div>
     </div>
   )
