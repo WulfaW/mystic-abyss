@@ -114,7 +114,7 @@ export default function Page() {
   const [activeShot, setActiveShot] = useState(0)
   const [lobbyOpen, setLobbyOpen] = useState(true)
   const lobbies = useLobbies()
-  const online = lobbies?.reduce((n, l) => n + l.players, 0) ?? 0  }
+  const online = lobbies?.reduce((n, l) => n + l.players, 0) ?? 0
 
   return (
     <main className="min-h-screen overflow-x-hidden relative">
