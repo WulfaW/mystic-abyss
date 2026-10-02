@@ -543,14 +543,7 @@ export default function Page() {
                     </span>
                     <span className="shrink-0" style={{ color: col, fontSize: '10px' }}>[{tag}]</span>
                   </div>
-                  <div className="flex justify-between" style={{ color: '#4a3a2a' }}>
-                    <span>
-                      {l.state === 'oyunda'
-                        ? (l.mode ? 'Arenada' : l.floor > 0 ? `Kat ${l.floor}` : 'Oyunda')
-                        : (l.players >= l.max ? 'Lobi dolu' : 'Lobide · katılınabilir')}
-                    </span>
-                    <span>{l.players}/{l.max} oyuncu</span>
-                  </div>
+                  <div className="flex justify-between items-end mt-2" style={{ color: '#4a3a2a' }}><div className="flex flex-col gap-1"><span>{l.state === 'oyunda' ? (l.mode ? 'Arenada' : l.floor > 0 ? `Kat ${l.floor}` : 'Oyunda') : (l.players >= l.max ? 'Lobi dolu' : 'Bekliyor')}</span><span>{l.players}/{l.max} oyuncu</span></div>{l.state !== 'oyunda' && l.players < l.max && (<a href={`steam://joinlobby/480/${l.id}`} className="bg-[#3d0808] hover:bg-[#c0392b] text-[#e8d5b0] px-3 py-1 rounded transition-colors text-[10px] uppercase tracking-widest border border-[#5a1a1a]">KATIL</a>)}</div>
                 </div>
               )
             })}
@@ -566,4 +559,5 @@ export default function Page() {
     </main>
   )
 }
+
 
