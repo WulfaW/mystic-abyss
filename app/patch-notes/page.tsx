@@ -339,6 +339,65 @@ const PATCHES = [
     ]
   }
 ,
+
+  {
+    id: 'v0.8',
+    title: 'YAMA 0.8',
+    subtitle: 'Mystic Abyss II 🩸',
+    date: 'Erken Erişim Sürümü',
+    mandatory: true,
+    intro: 'Oyunun ilk adımları... Element silahlarının, yığılabilir kalıntıların ve tek başına oynayanlar için yoldaş Ruh Kuzgunu\'nun uçurumda ilk kez göründüğü o efsanevi Erken Erişim güncellemesi!',
+    sections: [
+      {
+        id: 'v0.8-silahlar',
+        title: 'SİLAHLAR VE GANİMETLER ⚔️',
+        icon: GiBroadsword,
+        color: 'text-yellow-500',
+        items: [
+          '<strong class="text-[#e8d5b0]">Ganimet Silahları:</strong> Tam 8 farklı element ve her sınıfa özel 8 silah eklendi.',
+          'Silahınızı değiştirdiğinizde sadece özellikleri değil, <b>modeli ve Q yeteneği de değişir!</b>',
+          '<strong class="text-[#e8d5b0]">Nadir / Destansı / Efsanevi:</strong> Silahların nadirlik dereceleri var. Ayrıca kestiğiniz her muhafız, takımdaki herkese ayrı bir silah bırakır.',
+          '<strong class="text-[#c0392b]">Kalıntılar Yığılıyor:</strong> Artık aynı kalıntıdan bir tane daha bulduğunuzda etkileri birleşerek çok daha güçlü hale gelir.'
+        ]
+      },
+      {
+        id: 'v0.8-mekanikler',
+        title: 'YENİ MEKANİKLER VE GÖREVLER 📜',
+        icon: GiDungeonGate,
+        color: 'text-purple-400',
+        items: [
+          '<strong class="text-[#e8d5b0]">Ruh Kuzgunu:</strong> Tek başına oynayan (solo) oyuncular için eklendi! Yanınızda savaşır ve katta bir kez sizi mutlak bir ölümden kurtarır. 🐦‍⬛',
+          '<strong class="text-[#e8d5b0]">Kat Görevleri:</strong> Zindanı keşfederken karşılaşacağınız rastgele yan görevler eklendi.',
+          '<strong class="text-[#e8d5b0]">Meydan Okuma Sunağı:</strong> Üzerinize 3 dalga halinde düşman akını yollayan yeni bir sunak eklendi.'
+        ]
+      },
+      {
+        id: 'v0.8-atmosfer',
+        title: 'ATMOSFER VE GRAFİKLER 🌌',
+        icon: GiDaemonSkull,
+        color: 'text-blue-500',
+        items: [
+          'Muhafız (Boss) odalarının gökyüzü artık <b>mor uzay göğü</b> olarak görünüyor.',
+          'Karakterlere eklemli (rigged) yepyeni animasyonlar eklendi.',
+          'Zindan duvarlarına ürkütücü kanlı duvar yazıları eklendi.',
+          'Arayüz tamamen yenilendi, oyunun ruhuna uygun yeni <b>piksel yazı tipi (font)</b> eklendi.',
+          'Oyun dünyasına yeni ses efektleri eklendi.'
+        ]
+      },
+      {
+        id: 'v0.8-duzeltmeler',
+        title: 'DÜZELTMELER VE PERFORMANS 🛠️',
+        icon: GiHammerDrop,
+        color: 'text-gray-400',
+        items: [
+          'Modellerde yüzlerin birbirine girmesi (clipping) sorunu çözüldü.',
+          'Eşyaların ve ganimetlerin üst üste doğma hatası giderildi.',
+          '<strong class="text-[#e8d5b0]">Performans:</strong> RAM kullanımı sabitlendi ve oyunun genel performansı başarılı bir şekilde korundu. 🚀'
+        ]
+      }
+    ]
+  }
+,
 export default function PatchNotes() {
   const [activeSection, setActiveSection] = useState('v1.3')
 
