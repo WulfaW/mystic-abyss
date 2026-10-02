@@ -16,13 +16,13 @@ const screenshots = [
 ]
 
 const features = [
-  { icon: Users, title: '8 Ki┼şilik Co-op', desc: 'Steam ve yerel IP ├╝zerinden arkada┼şlar─▒nla in. ├ûl├╝nce ruhuna d├Ân├╝┼ş├╝rs├╝n, dostlar─▒n seni diriltebilir.' },
-  { icon: Skull, title: '15 Muhaf─▒z, 30 Kat', desc: 'Her ko┼şuda muhaf─▒zlar ve katlar yeniden ├╝retilir. Hi├ğbir ini┼ş bir ├Âncekine benzemez.' },
-  { icon: Zap, title: 'Korozyon Sistemi', desc: 'U├ğurum zihnini ├ğ├╝r├╝t├╝r. 100\'e ula┼ş─▒rsa beden ├ğ├Âz├╝l├╝r. G├╝├ğ verir ama azami can─▒ d├╝┼ş├╝r├╝r.' },
-  { icon: Swords, title: 'PvP Arenas─▒', desc: 'Kan Kolezyumu\'nda 2-8 ki┼şilik Herkes Herkese veya Tak─▒m Sava┼ş─▒ modlar─▒ seni bekliyor.' },
+  { icon: Users, title: '8 Kişilik Co-op', desc: 'Steam ve yerel IP üzerinden arkadaşlarınla in. Ölünce ruhuna dönüşürsün, dostların seni diriltebilir.' },
+  { icon: Skull, title: '15 Muhafız, 30 Kat', desc: 'Her koşuda muhafızlar ve katlar yeniden üretilir. Hiçbir iniş bir öncekine benzemez.' },
+  { icon: Zap, title: 'Korozyon Sistemi', desc: 'Uçurum zihnini çürütür. 100\'e ulaşırsa beden çözülür. Güç verir ama azami canı düşürür.' },
+  { icon: Swords, title: 'PvP Arenası', desc: 'Kan Kolezyumu\'nda 2-8 kişilik Herkes Herkese veya Takım Savaşı modları seni bekliyor.' },
 ]
 
-// Oyundaki herkese a├ğ─▒k Steam (Spacewar) lobileri; kurucunun oyunu /api/lobbies'e bildirir
+// Oyundaki herkese açık Steam (Spacewar) lobileri; kurucunun oyunu /api/lobbies'e bildirir
 type Lobby = {
   id: string
   name: string
@@ -55,18 +55,18 @@ function useLobbies() {
 }
 
 function lobbyTag(l: Lobby): [string, string] {
-  if (l.mode === 'ffa') return ['PVP ┬À HERKES', '#c0392b']
-  if (l.mode === 'team') return ['PVP ┬À TAKIM', '#c0392b']
+  if (l.mode === 'ffa') return ['PVP · HERKES', '#c0392b']
+  if (l.mode === 'team') return ['PVP · TAKIM', '#c0392b']
   if (l.oath && l.oath !== 'Yemin yok') return [l.oath.toLocaleUpperCase('tr'), '#e67e22']
   return ['CO-OP', '#5a8a3a']
 }
 
-// Ate┼ş k─▒v─▒lc─▒mlar─▒ componenti
+// Ateş kıvılcımları componenti
 function Embers() {
   const [embers, setEmbers] = useState<any[]>([])
 
   useEffect(() => {
-    // Rastgele 30 k─▒v─▒lc─▒m olu┼ştur
+    // Rastgele 30 kıvılcım oluştur
     const newEmbers = Array.from({ length: 30 }).map((_, i) => ({
       id: i,
       left: Math.random() * 100 + '%',
@@ -121,7 +121,7 @@ export default function Page() {
     <main className="min-h-screen overflow-x-hidden relative">
       <Embers />
 
-      {/* ÔöÇÔöÇ NAV ÔöÇÔöÇ */}
+      {/* ── NAV ── */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-4 bg-[#050302]/90 backdrop-blur-md"
         style={{ 
           borderBottom: '1px solid #2a1a0a',
@@ -134,9 +134,9 @@ export default function Page() {
         <ul className="hidden md:flex items-center gap-10 text-xs tracking-[0.15em] uppercase"
           style={{ fontFamily: 'Cinzel, serif' }}>
           {[
-            { label: 'S─▒n─▒flar', href: '#siniflar' },
-            { label: '├ûzellikler', href: '#ozellikler' },
-            { label: 'Hakk─▒nda', href: '#hakkinda' },
+            { label: 'Sınıflar', href: '#siniflar' },
+            { label: 'Özellikler', href: '#ozellikler' },
+            { label: 'Hakkında', href: '#hakkinda' },
           ].map(({ label, href }) => (
             <li key={label}>
               <a href={href} 
@@ -150,20 +150,20 @@ export default function Page() {
             <a href={itchUrl} target="_blank" rel="noreferrer"
               className="diablo-btn diablo-btn-primary"
               style={{ padding: '8px 24px', fontSize: '0.75rem', letterSpacing: '0.2em', boxShadow: '0 0 0 2px #050000, 0 0 0 3px #5a1a1a, inset 0 0 10px rgba(0,0,0,0.95)' }}>
-              HEMEN ─░ND─░R
+              HEMEN İNDİR
             </a>
           </li>
         </ul>
       </nav>
 
-      {/* ÔöÇÔöÇ HERO ÔöÇÔöÇ */}
+      {/* ── HERO ── */}
       <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4"
         style={{
           backgroundImage: 'url("/hero-bg.jpg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center top',
         }}>
-        {/* Karartma ve duman katman─▒ (yaz─▒ okunsun diye) */}
+        {/* Karartma ve duman katmanı (yazı okunsun diye) */}
         <div className="absolute inset-0 pointer-events-none" style={{
           background: 'linear-gradient(180deg, rgba(5,0,0,0.4) 0%, rgba(5,0,0,0.8) 50%, rgba(5,0,0,1) 100%)',
         }} />
@@ -178,7 +178,7 @@ export default function Page() {
           className="relative z-10 max-w-4xl mx-auto"
         >
           <p className="text-xs tracking-[0.5em] uppercase mb-4" style={{ fontFamily: 'Cinzel, serif', color: '#8a6a3a' }}>
-            ÔÇö Online Co-op Dungeon Roguelike ÔÇö
+            — Online Co-op Dungeon Roguelike —
           </p>
 
           <h1 className="text-5xl md:text-8xl font-black uppercase leading-none mb-6 glow-red"
@@ -191,17 +191,17 @@ export default function Page() {
           </h1>
 
           <p className="text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed" style={{ color: '#a89070' }}>
-            8 ki┼şilik online co-op. 30 katl─▒ zindan. 9 s─▒n─▒f. U├ğurumun Kalbini durdur ÔÇö e─şer akl─▒n yerinde kal─▒rsa.
+            8 kişilik online co-op. 30 katlı zindan. 9 sınıf. Uçurumun Kalbini durdur — eğer aklın yerinde kalırsa.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 md:gap-8 justify-center items-center">
             <a href={itchUrl} target="_blank" rel="noreferrer"
               className="diablo-btn diablo-btn-primary">
-              OYUNU ─░ND─░R
+              OYUNU İNDİR
             </a>
             <a href="#siniflar"
               className="diablo-btn diablo-btn-secondary">
-              DAHA FAZLA B─░LG─░ Ôåù
+              DAHA FAZLA BİLGİ ↗
             </a>
           </div>
 
@@ -210,12 +210,12 @@ export default function Page() {
                style={{ color: '#a89070', fontFamily: 'Cinzel, serif', borderBottom: '1px solid #5a4a3a', paddingBottom: '4px' }}
                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#e8d5b0'; (e.currentTarget as HTMLElement).style.borderBottomColor = '#c9973a'; }}
                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = '#a89070'; (e.currentTarget as HTMLElement).style.borderBottomColor = '#5a4a3a'; }}>
-              Mystic Abyss II'ye Yeni mi Ba┼şl─▒yorsun? Ôåô
+              Mystic Abyss II'ye Yeni mi Başlıyorsun? ↓
             </a>
           </div>
         </motion.div>
 
-        {/* A┼şa─ş─▒ kayd─▒r */}
+        {/* Aşağı kaydır */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -235,14 +235,14 @@ export default function Page() {
         </svg>
       </div>
 
-      {/* ÔöÇÔöÇ U├çURUMA HO┼Ş GELD─░N (50/50 Split) ÔöÇÔöÇ */}
+      {/* ── UÇURUMA HOŞ GELDİN (50/50 Split) ── */}
       <section id="hakkinda" className="py-12 px-4 max-w-6xl mx-auto relative z-10">
         <FadeIn>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative group cursor-pointer stone-border overflow-hidden">
               <img 
                 src="https://img.itch.zone/aW1hZ2UvNTA1NzQ5My8zMDM5Nzc1Ni5wbmc=/original/f7YA5q.png" 
-                alt="Mystic Abyss Oynan─▒┼ş" 
+                alt="Mystic Abyss Oynanış" 
                 className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
@@ -253,13 +253,13 @@ export default function Page() {
             </div>
             <div>
               <h2 className="text-3xl md:text-5xl uppercase tracking-widest mb-6" style={{ fontFamily: 'Cinzel, serif', color: '#e8d5b0' }}>
-                U├çURUMA<br/>HO┼Ş GELD─░N
+                UÇURUMA<br/>HOŞ GELDİN
               </h2>
               <p className="leading-relaxed text-base md:text-lg mb-6" style={{ color: '#8a7060' }}>
-                Aksiyon roguelike t├╝r├╝n├╝ ba┼ştan tan─▒mlayan ve amans─▒z bir zorluk sunan bu karanl─▒k d├╝nyay─▒ ke┼şfet. Aethelgard ┼şehrinin alt─▒nda yatan deh┼şet, 30 katl─▒k sonsuz bir zindanda seni bekliyor.
+                Aksiyon roguelike türünü baştan tanımlayan ve amansız bir zorluk sunan bu karanlık dünyayı keşfet. Aethelgard şehrinin altında yatan dehşet, 30 katlık sonsuz bir zindanda seni bekliyor.
               </p>
               <p className="leading-relaxed text-base md:text-lg" style={{ color: '#8a7060' }}>
-                Karanl─▒k yay─▒l─▒rken korozyon zihnini yutuyor. U├ğurum her ad─▒mda de─şi┼şiyor, yeni tuzaklar ve muhaf─▒zlar kar┼ş─▒na ├ğ─▒k─▒yor. Bu lanetli derinliklerde her ┼şeyi t├╝keten karanl─▒─şa ─▒┼ş─▒k getirmeye ├ğok az ki┼şi cesaret edebilir.
+                Karanlık yayılırken korozyon zihnini yutuyor. Uçurum her adımda değişiyor, yeni tuzaklar ve muhafızlar karşına çıkıyor. Bu lanetli derinliklerde her şeyi tüketen karanlığa ışık getirmeye çok az kişi cesaret edebilir.
               </p>
             </div>
           </div>
@@ -275,15 +275,15 @@ export default function Page() {
         </svg>
       </div>
 
-      {/* ÔöÇÔöÇ SON G├£NCELLEMELER / ├ûZELL─░KLER (2 Column Cards) ÔöÇÔöÇ */}
+      {/* ── SON GÜNCELLEMELER / ÖZELLİKLER (2 Column Cards) ── */}
       <section id="ozellikler" className="py-12 px-4 max-w-6xl mx-auto relative z-10">
         <FadeIn>
           <div className="text-center mb-16">
             <p className="text-xs uppercase tracking-[0.3em] mb-2" style={{ color: '#c0392b', fontFamily: 'Cinzel, serif' }}>
-              U├ğurum'da Yeni
+              Uçurum'da Yeni
             </p>
             <h2 className="text-3xl md:text-4xl uppercase tracking-widest" style={{ fontFamily: 'Cinzel, serif', color: '#e8d5b0' }}>
-              SON G├£NCELLEMELER
+              SON GÜNCELLEMELER
             </h2>
           </div>
 
@@ -304,13 +304,13 @@ export default function Page() {
                 </div>
               </div>
               <p className="text-xs uppercase tracking-[0.2em] mb-2" style={{ color: '#8a7060', fontFamily: 'Cinzel, serif' }}>
-                8 Ki┼şilik ├çok Oyunculu
+                8 Kişilik Çok Oyunculu
               </p>
               <h4 className="text-xl uppercase tracking-widest mb-4" style={{ fontFamily: 'Cinzel, serif', color: '#e8d5b0' }}>
-                KARANLI─ŞA B─░RL─░KTE ─░N─░N
+                KARANLIĞA BİRLİKTE İNİN
               </h4>
               <p className="text-sm leading-relaxed mb-8 max-w-md mx-auto" style={{ color: '#8a7060' }}>
-                Yerel a─ş veya Steam ├╝zerinden dostlar─▒n─▒z─▒ ├ğa─ş─▒r─▒n. ├ûld├╝─ş├╝n├╝zde bir ruha d├Ân├╝┼ş├╝r, arkada┼şlar─▒n─▒z sizi diriltene kadar beklersiniz. Zindan her seferinde yeniden ├╝retilir.
+                Yerel ağ veya Steam üzerinden dostlarınızı çağırın. Öldüğünüzde bir ruha dönüşür, arkadaşlarınız sizi diriltene kadar beklersiniz. Zindan her seferinde yeniden üretilir.
               </p>
               <a href={itchUrl} target="_blank" rel="noreferrer" className="diablo-btn diablo-btn-secondary w-full sm:w-auto">
                 CO-OP DETAYLARI
@@ -327,7 +327,7 @@ export default function Page() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end items-center pb-6">
                    <h3 className="text-2xl uppercase tracking-widest" style={{ fontFamily: 'Cinzel Decorative, serif', color: '#f0d9b5' }}>
-                    MYSTIC ABYSS<br/><span className="text-sm tracking-[0.3em]" style={{ color: '#c0392b' }}>KOROZYON LANET─░</span>
+                    MYSTIC ABYSS<br/><span className="text-sm tracking-[0.3em]" style={{ color: '#c0392b' }}>KOROZYON LANETİ</span>
                   </h3>
                 </div>
               </div>
@@ -335,13 +335,13 @@ export default function Page() {
                 Yeni Mekanik
               </p>
               <h4 className="text-xl uppercase tracking-widest mb-4" style={{ fontFamily: 'Cinzel, serif', color: '#e8d5b0' }}>
-                Z─░HN─░N─░Z─░ KORUYUN
+                ZİHNİNİZİ KORUYUN
               </h4>
               <p className="text-sm leading-relaxed mb-8 max-w-md mx-auto" style={{ color: '#8a7060' }}>
-                Karanl─▒kta kald─▒k├ğa korozyon seviyeniz artar. Artan korozyon size g├╝├ğ verir ancak azami sa─şl─▒─ş─▒n─▒z─▒ d├╝┼ş├╝r├╝r. Korozyon 100'e ula┼şt─▒─ş─▒nda bedeniniz ├ğ├Âz├╝l├╝r ve ├Âl├╝rs├╝n├╝z.
+                Karanlıkta kaldıkça korozyon seviyeniz artar. Artan korozyon size güç verir ancak azami sağlığınızı düşürür. Korozyon 100'e ulaştığında bedeniniz çözülür ve ölürsünüz.
               </p>
               <a href={itchUrl} target="_blank" rel="noreferrer" className="diablo-btn diablo-btn-secondary w-full sm:w-auto">
-                MEKAN─░KLER─░ ─░NCELE
+                MEKANİKLERİ İNCELE
               </a>
             </div>
 
@@ -351,7 +351,7 @@ export default function Page() {
 
       <div className="gold-divider" />
 
-      {/* ÔöÇÔöÇ SINIFLAR ÔöÇÔöÇ */}
+      {/* ── SINIFLAR ── */}
       <section id="siniflar" className="py-20 px-4 max-w-6xl mx-auto relative z-10">
         <FadeIn>
           <div className="text-center mb-16">
@@ -359,28 +359,28 @@ export default function Page() {
               DOKUZ SINIF
             </h2>
             <p className="text-base" style={{ color: '#8a7060' }}>
-              Her s─▒n─▒f─▒n kendine ├Âzg├╝ silah─▒, pasif yetene─şi ve nihai g├╝c├╝ (ultisi) vard─▒r. U├ğuruma kim olarak ineceksin?
+              Her sınıfın kendine özgü silahı, pasif yeteneği ve nihai gücü (ultisi) vardır. Uçuruma kim olarak ineceksin?
             </p>
           </div>
         </FadeIn>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
-            { name: 'Sava┼ş├ğ─▒', desc: 'Uzun k─▒l─▒├ğ ve a─ş─▒r z─▒rh. ├ûn saf─▒n k─▒r─▒lmaz kalesi.', icon: <GiBroadsword size={40} /> },
-            { name: 'D├╝zenbaz', desc: '├çift han├ğerli g├Âlge. Gizlenerek yakla┼ş─▒r, ├Âld├╝rerek kaybolur.', icon: <GiDaggers size={40} /> },
-            { name: 'B├╝y├╝c├╝', desc: 'Ate┼ş ve buzun ustas─▒. K─▒yamet Ate┼şiyle g├Âkten azap indirir.', icon: <GiSpellBook size={40} /> },
-            { name: 'Ruhban', desc: 'Kutsal topuzlu ┼şifac─▒. D├╝┼şenleri aya─şa kald─▒r─▒r.', icon: <GiHolySymbol size={40} /> },
-            { name: 'Paladin', desc: 'Sava┼ş ├ğeki├ğli kutsal ┼ş├Âvalye. ─░lahi H├╝k├╝m ile yarg─▒lar.', icon: <GiShield size={40} /> },
-            { name: 'Ok├ğu', desc: 'Keskin ni┼şanc─▒. Ok ya─şmuruyla d├╝┼şman─▒ durdurmadan vurur.', icon: <GiBowArrow size={40} /> },
-            { name: 'Ozan', desc: 'Sazl─▒ destek ustas─▒. T├╝rk├╝leriyle ekibi efsaneye d├Ân├╝┼şt├╝r├╝r.', icon: <GiHarp size={40} /> },
-            { name: 'Silah┼ş├Âr', desc: 'Alt─▒patlarl─▒ ni┼şanc─▒. Ejder Namlusuyla her ┼şeyi yak─▒p ge├ğer.', icon: <GiMusket size={40} /> },
-            { name: 'Cinci', desc: 'Kara kitapl─▒ ├ğa─ş─▒r─▒c─▒. Cinler ve iblislerle d├╝┼şman─▒ ezer.', icon: <GiDaemonSkull size={40} /> },
+            { name: 'Savaşçı', desc: 'Uzun kılıç ve ağır zırh. Ön safın kırılmaz kalesi.', icon: <GiBroadsword size={40} /> },
+            { name: 'Düzenbaz', desc: 'Çift hançerli gölge. Gizlenerek yaklaşır, öldürerek kaybolur.', icon: <GiDaggers size={40} /> },
+            { name: 'Büyücü', desc: 'Ateş ve buzun ustası. Kıyamet Ateşiyle gökten azap indirir.', icon: <GiSpellBook size={40} /> },
+            { name: 'Ruhban', desc: 'Kutsal topuzlu şifacı. Düşenleri ayağa kaldırır.', icon: <GiHolySymbol size={40} /> },
+            { name: 'Paladin', desc: 'Savaş çekiçli kutsal şövalye. İlahi Hüküm ile yargılar.', icon: <GiShield size={40} /> },
+            { name: 'Okçu', desc: 'Keskin nişancı. Ok yağmuruyla düşmanı durdurmadan vurur.', icon: <GiBowArrow size={40} /> },
+            { name: 'Ozan', desc: 'Sazlı destek ustası. Türküleriyle ekibi efsaneye dönüştürür.', icon: <GiHarp size={40} /> },
+            { name: 'Silahşör', desc: 'Altıpatlarlı nişancı. Ejder Namlusuyla her şeyi yakıp geçer.', icon: <GiMusket size={40} /> },
+            { name: 'Cinci', desc: 'Kara kitaplı çağırıcı. Cinler ve iblislerle düşmanı ezer.', icon: <GiDaemonSkull size={40} /> },
           ].map(({ name, desc, icon }, index) => (
             <FadeIn key={name} delay={index * 0.05}>
               <div className="group perspective-1000 h-64 w-full cursor-default">
                 <div className="relative w-full h-full transition-transform duration-700 preserve-3d group-hover:rotate-y-180">
                   
-                  {/* ├ûN Y├£Z (FRONT) */}
+                  {/* ÖN YÜZ (FRONT) */}
                   <div className="absolute inset-0 backface-hidden stone-border flex flex-col items-center justify-center p-8"
                     style={{ background: 'linear-gradient(to bottom, rgba(15,3,0,0.8), rgba(5,0,0,0.95))' }}>
                     <div className="mb-4 p-4 rounded-full" style={{ background: 'rgba(100,0,0,0.1)', color: '#c0392b', border: '1px solid #3a1a1a' }}>
@@ -391,7 +391,7 @@ export default function Page() {
                     </h3>
                   </div>
 
-                  {/* ARKA Y├£Z (BACK) */}
+                  {/* ARKA YÜZ (BACK) */}
                   <div className="absolute inset-0 backface-hidden rotate-y-180 stone-border flex flex-col items-center justify-center p-6 text-center"
                     style={{ background: 'linear-gradient(to bottom, rgba(40,10,0,0.9), rgba(15,0,0,0.95))', boxShadow: '0 0 30px rgba(150,20,0,0.2)' }}>
                     <h3 className="text-sm uppercase tracking-widest mb-3 glow-red" style={{ fontFamily: 'Cinzel, serif', color: '#c0392b' }}>
@@ -409,17 +409,17 @@ export default function Page() {
 
       <div className="gold-divider" />
 
-      {/* ÔöÇÔöÇ KURULUM ÔöÇÔöÇ */}
+      {/* ── KURULUM ── */}
       <section className="py-20 px-4 max-w-3xl mx-auto text-center relative z-10">
         <FadeIn>
           <h2 className="text-3xl md:text-4xl uppercase tracking-widest mb-12" style={{ fontFamily: 'Cinzel, serif', color: '#e8d5b0' }}>
-            U├ğuruma ─░n
+            Uçuruma İn
           </h2>
           <ol className="text-left space-y-6 mb-12">
             {[
-              { n: '01', t: '─░ndir', d: "Itch.io'dan zip dosyas─▒n─▒ ├╝cretsiz indirin (yakla┼ş─▒k 41 MB)." },
-              { n: '02', t: '├ç─▒kart', d: 'Ar┼şivi istedi─şiniz bir klas├Âre ├ğ─▒kart─▒n. Kurulum gerekmez.' },
-              { n: '03', t: 'Ba┼şlat', d: 'MysticAbyssII.exe dosyas─▒n─▒ ├ğal─▒┼şt─▒r─▒n. Online i├ğin Steam a├ğ─▒k olsun.' },
+              { n: '01', t: 'İndir', d: "Itch.io'dan zip dosyasını ücretsiz indirin (yaklaşık 41 MB)." },
+              { n: '02', t: 'Çıkart', d: 'Arşivi istediğiniz bir klasöre çıkartın. Kurulum gerekmez.' },
+              { n: '03', t: 'Başlat', d: 'MysticAbyssII.exe dosyasını çalıştırın. Online için Steam açık olsun.' },
             ].map(({ n, t, d }) => (
               <li key={n} className="flex gap-6 items-start">
                 <span className="text-4xl font-black shrink-0" style={{ fontFamily: 'Cinzel, serif', color: '#3a1a0a', lineHeight: 1 }}>{n}</span>
@@ -432,17 +432,62 @@ export default function Page() {
           </ol>
           <a href={itchUrl} target="_blank" rel="noreferrer"
             className="diablo-btn diablo-btn-primary">
-            Itch.io'dan ├£cretsiz ─░ndir
+            Itch.io'dan Ücretsiz İndir
           </a>
         </FadeIn>
       </section>
 
-      {/* ÔöÇÔöÇ FOOTER ÔöÇÔöÇ */}
+      
+      {/* ── GERİ BİLDİRİM (FEEDBACK) ── */}
+      <section className="py-20 px-4 max-w-2xl mx-auto text-center relative z-10">
+        <FadeIn>
+          <div className="stone-border p-8" style={{ background: 'rgba(10,2,0,0.85)', boxShadow: '0 0 40px rgba(100,0,0,0.1)' }}>
+            <h2 className="text-2xl uppercase tracking-widest mb-2 glow-red" style={{ fontFamily: 'Cinzel, serif', color: '#e8d5b0' }}>
+              Uçuruma Seslen
+            </h2>
+            <p className="text-sm mb-8" style={{ color: '#8a7060' }}>
+              Oyun hakkındaki fikirlerinizi, bulduğunuz hataları (bug) veya önerilerinizi doğrudan geliştirici ekibe iletin.
+            </p>
+
+            <form ref={formRef} action={handleFeedback} className="flex flex-col gap-4 text-left">
+              <div>
+                <label className="block text-xs uppercase tracking-widest mb-2" style={{ fontFamily: 'Cinzel, serif', color: '#a89070' }}>İsminiz (İsteğe Bağlı)</label>
+                <input type="text" name="name" 
+                  className="w-full bg-black/50 border border-[#3a1a0a] rounded px-4 py-2 text-sm text-[#e8d5b0] focus:outline-none focus:border-[#c0392b] transition-colors"
+                  placeholder="Gezgin Ruh"
+                />
+              </div>
+              <div>
+                <label className="block text-xs uppercase tracking-widest mb-2" style={{ fontFamily: 'Cinzel, serif', color: '#a89070' }}>Mesajınız *</label>
+                <textarea name="message" required rows={4}
+                  className="w-full bg-black/50 border border-[#3a1a0a] rounded px-4 py-2 text-sm text-[#e8d5b0] focus:outline-none focus:border-[#c0392b] transition-colors resize-none"
+                  placeholder="Zindanın 15. katında bir duvarın içinden geçebiliyorum..."
+                ></textarea>
+              </div>
+
+              <button type="submit" disabled={feedbackStatus === 'loading'}
+                className="diablo-btn diablo-btn-primary w-full mt-4 flex justify-center items-center h-12"
+                style={{ opacity: feedbackStatus === 'loading' ? 0.7 : 1 }}>
+                {feedbackStatus === 'loading' ? 'GÖNDERİLİYOR...' : 'MESAJI GÖNDER'}
+              </button>
+
+              {feedbackStatus === 'success' && (
+                <p className="text-center text-xs mt-2 text-green-500" style={{ fontFamily: 'Cinzel, serif' }}>Mesajınız karanlığın içinden başarıyla iletildi!</p>
+              )}
+              {feedbackStatus === 'error' && (
+                <p className="text-center text-xs mt-2 text-red-500" style={{ fontFamily: 'Cinzel, serif' }}>Bağlantı koptu, mesaj iletilemedi.</p>
+              )}
+            </form>
+          </div>
+        </FadeIn>
+      </section>
+
+{/* ── FOOTER ── */}
       <footer className="py-12 text-center relative z-10" style={{ borderTop: '1px solid #1a0a00' }}>
         <p className="text-xs tracking-widest uppercase mb-2" style={{ fontFamily: 'Cinzel, serif', color: '#3a2a1a' }}>
           The Mystic Abyss II
         </p>
-        <p className="text-xs mb-4" style={{ color: '#3a2a1a' }}>Geli┼ştirici: An─▒l</p>
+        <p className="text-xs mb-4" style={{ color: '#3a2a1a' }}>Geliştirici: Anıl</p>
         <a href={itchUrl} target="_blank" rel="noreferrer"
           className="text-xs tracking-widest uppercase hover:text-[#c0392b] transition-colors"
           style={{ color: '#5a2a1a', fontFamily: 'Cinzel, serif' }}>
@@ -450,7 +495,7 @@ export default function Page() {
         </a>
       </footer>
 
-      {/* ÔöÇÔöÇ AKT─░F LOB─░LER (Sa─ş Alt Sabit Panel) ÔöÇÔöÇ */}
+      {/* ── AKTİF LOBİLER (Sağ Alt Sabit Panel) ── */}
       <div className="fixed bottom-0 right-0 z-40 w-72"
         style={{ background: 'rgba(8,2,0,0.97)', border: '1px solid #2a1200', borderBottom: 'none' }}>
         <button
@@ -460,18 +505,18 @@ export default function Page() {
           onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = 'rgba(30,5,0,0.8)'}
           onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = 'transparent'}>
           <span className="text-xs uppercase tracking-widest" style={{ fontFamily: 'Cinzel, serif', color: '#c9973a' }}>
-            Ôùå Aktif Lobiler{lobbies && lobbies.length > 0 ? ` (${lobbies.length})` : ''}
+            ◆ Aktif Lobiler{lobbies && lobbies.length > 0 ? ` (${lobbies.length})` : ''}
           </span>
           {lobbyOpen ? <ChevronDown size={14} style={{ color: '#5a3a1a' }} /> : <ChevronUp size={14} style={{ color: '#5a3a1a' }} />}
         </button>
         {lobbyOpen && (
           <div className="p-4 space-y-3 max-h-64 overflow-y-auto">
             {lobbies === null && (
-              <p className="text-center text-xs" style={{ color: '#4a3a2a' }}>Lobiler y├╝kleniyorÔÇĞ</p>
+              <p className="text-center text-xs" style={{ color: '#4a3a2a' }}>Lobiler yükleniyor…</p>
             )}
             {lobbies?.length === 0 && (
               <p className="text-center text-xs leading-relaxed" style={{ color: '#4a3a2a' }}>
-                ┼Şu an a├ğ─▒k lobi yok.<br />Oyunda Steam lobisi kur, burada g├Âr├╝ns├╝n.
+                Şu an açık lobi yok.<br />Oyunda Steam lobisi kur, burada görünsün.
               </p>
             )}
             {lobbies?.map((l) => {
@@ -488,7 +533,7 @@ export default function Page() {
                     <span>
                       {l.state === 'oyunda'
                         ? (l.mode ? 'Arenada' : l.floor > 0 ? `Kat ${l.floor}` : 'Oyunda')
-                        : (l.players >= l.max ? 'Lobi dolu' : 'Lobide ┬À kat─▒l─▒nabilir')}
+                        : (l.players >= l.max ? 'Lobi dolu' : 'Lobide · katılınabilir')}
                     </span>
                     <span>{l.players}/{l.max} oyuncu</span>
                   </div>
@@ -497,7 +542,7 @@ export default function Page() {
             })}
             {lobbies && lobbies.length > 0 && (
               <p className="text-center text-xs" style={{ color: '#3a2a1a', fontFamily: 'Cinzel, serif' }}>
-                {online} oyuncu u├ğurumda ┬À Steam
+                {online} oyuncu uçurumda · Steam
               </p>
             )}
           </div>
