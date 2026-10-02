@@ -5,7 +5,7 @@ import { ChevronLeft } from 'lucide-react'
 import { 
   GiDaemonSkull, GiCrossbow, GiDungeonGate, 
   GiHarp, GiMagicSwirl, GiSoundWaves, GiMap,
-  GiSkeletalHand, GiPistolGun, GiFireBowl, GiHammerDrop
+  GiSkeletalHand, GiPistolGun, GiFireBowl, GiHammerDrop, GiBookAura
 } from 'react-icons/gi'
 
 const PATCHES = [
@@ -192,6 +192,67 @@ const PATCHES = [
           'Silahınızı <b>(X)</b> tuşuyla eritebilir veya tüccara satabilirsiniz.',
           '<b>Çoklu Kayıt Sistemi:</b> Artık her sınıfın kendine ait ayrı bir ilerleme kaydı var.',
           '10+ yepyeni başarım eklendi.'
+        ]
+      }
+    ]
+  }
+,
+
+  {
+    id: 'v1.1',
+    title: 'YAMA 1.1',
+    subtitle: 'Mystic Abyss II Online 🔫📖',
+    date: 'Eski Güncelleme',
+    mandatory: true,
+    intro: 'Barut kokusu ve kara büyü... Silahşör\'ün altıpatları uçurumu inletirken, Cinci\'nin cehennemden çağırdığı iblisler düşmanlara kan kusturacak!',
+    sections: [
+      {
+        id: 'v1.1-silahsor',
+        title: 'YENİ SINIF: SİLAHŞÖR',
+        icon: GiPistolGun,
+        color: 'text-yellow-600',
+        items: [
+          '<strong class="text-[#e8d5b0]">Altıpatlar:</strong> Sol tık anında isabet sağlar (hitscan). Sağ tık basılı tut-bırak ile delici ağır atış yapar.',
+          '<strong class="text-[#e8d5b0]">Q - Talih Sikkesi:</strong> Havaya bir sikke atarsınız. Havadayken (G) ile yumruklarsanız sikke hedefe kilitlenip herkesi deler. Yumruklamazsanız yere düşünce kör edici bir parıltı patlatır ve çevredeki tüm düşmanları 1,5 sn sersemletir.',
+          '<strong class="text-[#e8d5b0]">E - Korsan Bombası:</strong> Kurukafalı, fitili yanan klasik bir bomba fırlatır. Seker, yuvarlanır ve devasa bir patlama yaratır (Çatlak gizli duvarları da yıkar).',
+          '<strong class="text-[#e8d5b0]">R - Ejder Namlusu (Ulti):</strong> Silahı iki elle kavrar, doldurur ve 2 saniye boyunca önüne çıkan <b>her şeyi delen devasa bir ışın</b> ateşler.'
+        ]
+      },
+      {
+        id: 'v1.1-cinci',
+        title: 'YENİ SINIF: CİNCİ (WARLOCK)',
+        icon: GiBookAura,
+        color: 'text-purple-500',
+        items: [
+          '<strong class="text-[#e8d5b0]">Kara Büyü:</strong> Sol elde kara bir kitap tutarken sağ elinizden gölge okları fırlatırsınız (Ağır saldırı oku can emer).',
+          '<strong class="text-[#e8d5b0]">Q - Cin Çağır:</strong> Düşmanlara ateş tüküren şeytani kanatlı cinler çağırır.',
+          '<strong class="text-[#e8d5b0]">E - Cehennem Kapısı:</strong> Yerde bir portal açar ve devasa dokunaçlar düşmanları içine çekip hapseder.',
+          '<strong class="text-[#e8d5b0]">R - Cehennem Efendisi (Ulti):</strong> 14 saniye boyunca yanınızda omuz omuza savaşan devasa bir iblis çağırır.',
+          '<strong class="text-[#c0392b]">Ekstra:</strong> Her iki yeni sınıfa da 4\'er özel görünüm (skin), 6\'şar yetenek geliştirmesi ve 8\'er farklı ganimet silahı eklendi.'
+        ]
+      },
+      {
+        id: 'v1.1-muhafizlar',
+        title: 'MUHAFIZLAR VE DÜŞMANLAR',
+        icon: GiDaemonSkull,
+        color: 'text-red-600',
+        items: [
+          'Son Muhafız (Final Boss) hariç, her koşuda bosslar artık <b>tamamen rastgele</b> çıkacak.',
+          'Muhafızlar eskisinden daha dayanıklı ve sert. Yepyeni saldırı desenleri eklendi: <span class="italic text-[#c0392b]">Kıyamet Yağmuru</span> ve <span class="italic text-[#c0392b]">Şok Dalgası</span>.',
+          'Final boss aşamasında gökyüzü artık kıpkırmızı oluyor.',
+          '<strong class="text-[#e8d5b0]">Görsel Şölen:</strong> Tüm düşman ve muhafız modelleri baştan aşağı yeniden tasarlandı. Artık sizin karakterleriniz kadar detaylılar (Among Us\'a benzeyen o garip model tamamen oyundan kaldırıldı!).',
+          'Yerdeki cesetler, tavandan asılı bedenler ve kafes içindeki iskeletler çok daha ürkütücü olacak şekilde yenilendi.'
+        ]
+      },
+      {
+        id: 'v1.1-diger',
+        title: 'ZİNDANLAR VE DİĞER',
+        icon: GiDungeonGate,
+        color: 'text-gray-400',
+        items: [
+          'Zindanlara artık merdivenle çıkılan <b>korkuluklu dev teraslar</b> eklendi.',
+          'Yüksek ve devasa salonlarda yürüyebileceğiniz <b>taş köprüler</b> yer alıyor.',
+          'Oyuna yeteneklerinizi test edecek <b>25 yepyeni başarım (achievement)</b> eklendi.'
         ]
       }
     ]
