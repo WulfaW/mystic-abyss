@@ -1,8 +1,42 @@
 'use client'
 
 import { useRef, useState } from 'react'
-import { GiHarp, GiDaemonSkull, GiDungeonGate, GiShield } from 'react-icons/gi'
+import { 
+  GiHarp, GiDaemonSkull, GiDungeonGate, GiShield, GiBroadsword, 
+  GiBowArrow, GiMagicSwirl, GiPistolGun, GiFireBowl, GiHeartBeats, 
+  GiSkeletalHand, GiSoundWaves, GiShatteredSword, GiWalkingBoot,
+  GiCrescentStaff, GiHammerDrop, GiBookAura
+} from 'react-icons/gi'
 import html2canvas from 'html2canvas'
+
+// Kullanılabilecek tüm ikonların listesi
+const ICONS = [
+  GiHarp, GiDaemonSkull, GiDungeonGate, GiShield, GiBroadsword, 
+  GiBowArrow, GiMagicSwirl, GiPistolGun, GiFireBowl, GiHeartBeats, 
+  GiSkeletalHand, GiSoundWaves, GiShatteredSword, GiWalkingBoot,
+  GiCrescentStaff, GiHammerDrop, GiBookAura
+]
+
+// Tıklayınca ikonu değiştiren küçük bileşen
+function IconCycler({ initialIndex = 0 }: { initialIndex?: number }) {
+  const [index, setIndex] = useState(initialIndex)
+  
+  const handleNextIcon = () => {
+    setIndex((prev) => (prev + 1) % ICONS.length)
+  }
+
+  const IconComponent = ICONS[index]
+
+  return (
+    <div 
+      onClick={handleNextIcon}
+      title="İkonu değiştirmek için tıkla"
+      className="cursor-pointer hover:scale-110 transition-transform flex justify-center items-center w-full h-full"
+    >
+      <IconComponent size={30} />
+    </div>
+  )
+}
 
 export default function PatchGenerator() {
   const patchRef = useRef<HTMLDivElement>(null)
@@ -24,7 +58,8 @@ export default function PatchGenerator() {
       link.href = image
       link.click()
     } catch (err) {
-      console.error("HATA:", err); alert("İndirme başarısız oldu: " + err);
+      console.error("HATA:", err)
+      alert("İndirme başarısız oldu: " + err)
     }
     setDownloading(false)
   }
@@ -84,7 +119,7 @@ export default function PatchGenerator() {
               <div className="flex gap-6">
                 <div className="flex flex-col items-center gap-2">
                   <div className="w-14 h-14 rounded-full border-2 border-green-600 bg-black flex justify-center items-center text-green-500 shadow-[0_4px_10px_rgba(0,0,0,0.5)]">
-                    <GiHarp size={30} />
+                    <IconCycler initialIndex={0} /> {/* Ozan arpı */}
                   </div>
                   <span contentEditable={true} title="Tıkla ve Düzenle" suppressContentEditableWarning className="text-[11px] tracking-widest text-[#a89070] uppercase outline-none focus:bg-white/10 hover:bg-white/5 border border-transparent hover:border-white/20 transition-all cursor-text rounded">Ozan</span>
                 </div>
@@ -99,7 +134,7 @@ export default function PatchGenerator() {
               <div className="flex gap-6">
                 <div className="flex flex-col items-center gap-2">
                   <div className="w-14 h-14 rounded-full border-2 border-[#c0392b] bg-black flex justify-center items-center text-[#c0392b] shadow-[0_4px_10px_rgba(0,0,0,0.5)]">
-                    <GiShield size={30} />
+                    <IconCycler initialIndex={3} /> {/* Kalkan */}
                   </div>
                   <span contentEditable={true} title="Tıkla ve Düzenle" suppressContentEditableWarning className="text-[11px] tracking-widest text-[#a89070] uppercase outline-none focus:bg-white/10 hover:bg-white/5 border border-transparent hover:border-white/20 transition-all cursor-text rounded">S. Marşı</span>
                 </div>
@@ -119,13 +154,13 @@ export default function PatchGenerator() {
               <div className="flex gap-6">
                 <div className="flex flex-col items-center gap-2">
                   <div className="w-14 h-14 rounded-full border-2 border-yellow-600 bg-black flex justify-center items-center text-yellow-500 shadow-[0_4px_10px_rgba(0,0,0,0.5)]">
-                    <GiDaemonSkull size={30} />
+                    <IconCycler initialIndex={1} /> {/* Kuru kafa */}
                   </div>
                   <span contentEditable={true} title="Tıkla ve Düzenle" suppressContentEditableWarning className="text-[11px] tracking-widest text-[#a89070] uppercase outline-none focus:bg-white/10 hover:bg-white/5 border border-transparent hover:border-white/20 transition-all cursor-text rounded">Nekromant</span>
                 </div>
                 <div className="flex flex-col items-center gap-2">
                   <div className="w-14 h-14 rounded-full border-2 border-yellow-600 bg-black flex justify-center items-center text-yellow-500 shadow-[0_4px_10px_rgba(0,0,0,0.5)]">
-                    <GiDungeonGate size={30} />
+                    <IconCycler initialIndex={2} /> {/* Zindan Kapısı */}
                   </div>
                   <span contentEditable={true} title="Tıkla ve Düzenle" suppressContentEditableWarning className="text-[11px] tracking-widest text-[#a89070] uppercase outline-none focus:bg-white/10 hover:bg-white/5 border border-transparent hover:border-white/20 transition-all cursor-text rounded">Harita</span>
                 </div>
@@ -140,7 +175,7 @@ export default function PatchGenerator() {
               <div 
                 contentEditable={true} title="Tıkla ve Düzenle" 
                 suppressContentEditableWarning
-                className="bg-black/40 border border-[#3a1a0a] p-4 rounded text-xs text-[#a89070] leading-relaxed outline-none focus:bg-white/10 hover:bg-white/5 border border-transparent hover:border-white/20 transition-all cursor-text rounded whitespace-pre-wrap">
+                className="bg-black/40 border border-[#3a1a0a] p-4 text-xs text-[#a89070] leading-relaxed outline-none focus:bg-white/10 hover:bg-white/5 transition-all cursor-text rounded whitespace-pre-wrap">
 Müzik geçişleri yumuşatıldı.
 Teras korkulukları ve harita çarpışma hataları (clipping) düzeltildi.
 Uçurumun derinlikleri artık çok daha acımasız...
@@ -163,8 +198,11 @@ Uçurumun derinlikleri artık çok daha acımasız...
           <h3 className="text-[#e8d5b0] font-bold mb-2 uppercase tracking-widest text-xs" style={{ fontFamily: 'Cinzel, serif' }}>
             Nasıl Düzenlenir?
           </h3>
+          <p className="text-xs text-[#8a7060] leading-relaxed mb-4">
+            <b>Yazılar:</b> Üzerine tıklayıp doğrudan klavyeyle değiştirebilirsin.
+          </p>
           <p className="text-xs text-[#8a7060] leading-relaxed">
-            Resmin üzerindeki tüm yazılar <b>tıklanabilir ve düzenlenebilir</b> durumdadır. "YAMA 1.2.1" yazısına veya açıklamalara tıklayıp klavyeyle silebilir ve istediğinizi yazabilirsiniz.
+            <b>İkonlar:</b> İkonların (Arp, kalkan vs.) üzerine her tıkladığında oyuna uygun 15 farklı ikon arasında geçiş yapar. İstediğin ikonu bulana kadar tıkla!
           </p>
         </div>
 
