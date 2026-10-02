@@ -1,10 +1,14 @@
 'use server'
 
 export async function sendFeedbackToDiscord(formData: FormData) {
-  const webhookUrl = process.env.DISCORD_WEBHOOK_URL || 'https://discord.com/api/webhooks/1555611175427776552/-xBYIqB7d0No-3u7_Pjwh1QnRfg6VPClcTzQ-98VFjxvhw1wWJ-83uZ9Ck6QaqkG6584';
+  const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
   
   const name = formData.get('name') as string;
   const message = formData.get('message') as string;
+
+  if (!webhookUrl) {
+    return { error: 'Sunucu ayarları eksik. Lütfen Webhook URL ekleyin.' }
+  }
 
   if (!message || message.trim() === '') {
     return { error: 'Mesaj boş olamaz.' };
@@ -24,7 +28,7 @@ export async function sendFeedbackToDiscord(formData: FormData) {
         embeds: [
           {
             title: "📜 Uçurumdan Yeni Bir Mesaj Var!",
-            color: 12604203, // Diablo Red
+            color: 12604203,
             fields: [
               {
                 name: "Gönderen",
@@ -40,7 +44,7 @@ export async function sendFeedbackToDiscord(formData: FormData) {
     });
 
     if (!response.ok) {
-      return { error: 'Discord\'a gönderilirken bir hata oluştu.' };
+      return { error: 'Discorda gönderilirken bir hata oluştu.' };
     }
 
     return { success: true };
