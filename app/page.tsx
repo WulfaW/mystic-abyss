@@ -116,6 +116,20 @@ export default function Page() {
   const [lobbyOpen, setLobbyOpen] = useState(true)
   const lobbies = useLobbies()
   const online = lobbies?.reduce((n, l) => n + l.players, 0) ?? 0
+  const [feedbackStatus, setFeedbackStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const formRef = useRef<HTMLFormElement>(null)
+
+  async function handleFeedback(formData: FormData) {
+    setFeedbackStatus('loading')
+    const res = await sendFeedbackToDiscord(formData)
+    if (res.error) {
+      setFeedbackStatus('error')
+    } else {
+      setFeedbackStatus('success')
+      formRef.current?.reset()
+      setTimeout(() => setFeedbackStatus('idle'), 5000)
+    }
+  }
 
   return (
     <main className="min-h-screen overflow-x-hidden relative">
