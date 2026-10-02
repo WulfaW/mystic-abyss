@@ -2,7 +2,7 @@
 
 import { ArrowDown, ArrowUp, ChevronLeft, RefreshCw } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { GiHarp, GiDaemonSkull, GiMap } from 'react-icons/gi'
+import { GiHarp, GiDaemonSkull, GiDungeonGate } from 'react-icons/gi'
 
 export default function PatchNotes() {
   return (
@@ -109,7 +109,7 @@ export default function PatchNotes() {
 
         {/* HARİTA VE SİSTEM */}
         <h2 className="text-3xl uppercase tracking-widest mb-8 flex items-center gap-4" style={{ fontFamily: 'Cinzel, serif', color: '#e8d5b0' }}>
-          <span className="p-3 rounded bg-black/50 border border-[#3a1a0a] text-[#c0392b]"><GiMap size={24} /></span>
+          <span className="p-3 rounded bg-black/50 border border-[#3a1a0a] text-[#c0392b]"><GiDungeonGate size={24} /></span>
           Sistem ve Harita
         </h2>
         
