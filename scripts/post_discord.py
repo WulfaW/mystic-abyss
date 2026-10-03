@@ -42,7 +42,7 @@ def send_discord_message(version, details=""):
 
     data = {
         "username": "Uçurumun Habercisi",
-        "avatar_url": "https://img.itch.zone/aW1nLzE2MDcwMTM2LnBuZw==/315x250%23c/4E19%2Bs.png",
+        "avatar_url": "https://mystic-abyss.vercel.app/hero-bg.jpg",
         "content": f"<@&{ROLE_ID}>" if ROLE_ID else "",
         "embeds": [
             {
