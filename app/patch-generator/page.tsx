@@ -8,7 +8,7 @@ import {
   GiCrescentStaff, GiHammerDrop, GiBookAura, GiTrashCan
 } from 'react-icons/gi'
 import { Plus } from 'lucide-react'
-import html2canvas from 'html2canvas'
+import { toPng } from 'html-to-image'
 
 const ICONS = [
   GiHarp, GiDaemonSkull, GiDungeonGate, GiShield, GiBroadsword, 
@@ -92,22 +92,30 @@ export default function PatchGenerator() {
 
   const [buffs, setBuffs] = useState([{ id: 1, iconIndex: 0, text: "Ozan" }])
   const [nerfs, setNerfs] = useState([{ id: 2, iconIndex: 3, text: "S. Marşı" }])
+  const [newItems, setNewItems] = useState([
+    { id: 5, iconIndex: 16, text: "Yetenek" },
+    { id: 6, iconIndex: 11, text: "Sistem" }
+  ])
   const [adjusts, setAdjusts] = useState([{ id: 3, iconIndex: 1, text: "Nekromant" }, { id: 4, iconIndex: 2, text: "Harita" }])
 
   const downloadImage = async () => {
     if (!patchRef.current) return
     setDownloading(true)
     try {
-      const canvas = await html2canvas(patchRef.current, {
-        scale: 2,
-        backgroundColor: '#050000',
-        useCORS: true
-      })
+      const filter = (node: HTMLElement) => {
+        return !node.hasAttribute || !node.hasAttribute('data-html2canvas-ignore');
+      };
+
+      const dataUrl = await toPng(patchRef.current, {
+        cacheBust: true,
+        backgroundColor: '#050302',
+        pixelRatio: 2,
+        filter: filter
+      });
       
-      const image = canvas.toDataURL("image/png", 1.0)
       const link = document.createElement('a')
       link.download = 'yama-ozeti.png'
-      link.href = image
+      link.href = dataUrl
       link.click()
     } catch (err) {
       alert("İndirme başarısız oldu: " + err)
