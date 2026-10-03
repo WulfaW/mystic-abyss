@@ -18,7 +18,7 @@ Kullanıcı (User) sana yeni bir yama notu (patch notes) verdiğinde, aşağıda
    Yama notlarını alıp `app/patch-notes/page.tsx` içindeki `PATCHES` dizisine (array) en başa (veya en sona) uygun ikonlar ve renklerle (Riot Games stili) ekle. Dosyayı kaydet.
 
 2. **Discord'a Duyur (Post to Discord):**
-   Kullanıcının Discord sunucusuna otomatik duyuru atmalısın. Projede hazır bir script var.
+   Kullanıcının Discord sunucusuna otomatik duyuru atmalısın. Projede hazır bir script var. Eğer .env.local dosyasında DISCORD_PING_ROLE_ID ayarlanmışsa, script otomatik olarak o rolü de pingleyecektir.
    Yama detaylarında kullanıcının sana verdiği TÜM maddeleri ve emojileri eksiksiz bir şekilde (hiçbir maddeyi silmeden ve özetlemeden) alt alta listeleyen bir içeriği `patch_details.txt` adlı bir dosyaya kaydet. (Bunu yapmak PowerShell'de tırnak işareti sorunlarını çözer).
    Sonra terminalden şu komutu çalıştır: `python scripts/post_discord.py "v1.5" "patch_details.txt"`
    Script senin yerine gerekli Webhook ayarlarını `.env.local` dosyasından okuyup çok havalı bir Discord Embed mesajını kanala fırlatacaktır.
