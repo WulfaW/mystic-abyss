@@ -22,8 +22,8 @@ function Category({ title, color, icon, items, onAddItem, onRemoveItem }: any) {
 
   return (
     <div className="mb-6 relative">
-      <h3 className="text-[#e8d5b0] text-sm tracking-widest mb-4 flex items-center gap-2" style={{ fontFamily: 'Cinzel, serif' }}>
-        <span className={color + " text-xl"}>{icon}</span> {title}
+      <h3 className="text-[#e8d5b0] text-xl tracking-widest mb-6 flex items-center gap-2" style={{ fontFamily: 'Cinzel, serif' }}>
+        <span className={color + " text-3xl"}>{icon}</span> {title}
       </h3>
       <div className="flex flex-wrap gap-6 items-start relative">
         
@@ -32,10 +32,10 @@ function Category({ title, color, icon, items, onAddItem, onRemoveItem }: any) {
           const IconComponent = ICONS[item.iconIndex]
           return (
             <div key={item.id} className={color.replace("text-", "border-") + " text-current relative group flex flex-col items-center gap-2"}>
-              <div className="w-14 h-14 rounded-full border-2 border-inherit bg-black flex justify-center items-center text-inherit shadow-[0_4px_10px_rgba(0,0,0,0.5)]">
-                <IconComponent size={30} />
+              <div className="w-24 h-24 rounded-full border-[3px] border-inherit bg-black flex justify-center items-center text-inherit shadow-[0_4px_10px_rgba(0,0,0,0.5)]">
+                <IconComponent size={50} />
               </div>
-              <span contentEditable={true} suppressContentEditableWarning className="text-[11px] tracking-widest text-[#a89070] uppercase outline-none focus:bg-white/10 hover:bg-white/5 border border-transparent hover:border-white/20 transition-all cursor-text rounded px-1 min-w-[50px] text-center">
+              <span contentEditable={true} suppressContentEditableWarning className="text-[16px] tracking-widest text-[#a89070] uppercase outline-none focus:bg-white/10 hover:bg-white/5 border border-transparent hover:border-white/20 transition-all cursor-text rounded px-1 min-w-[80px] text-center">
                 {item.text || "İSİM"}
               </span>
               
@@ -56,9 +56,9 @@ function Category({ title, color, icon, items, onAddItem, onRemoveItem }: any) {
           <button 
             data-html2canvas-ignore="true"
             onClick={() => setShowAddMenu(!showAddMenu)}
-            className="w-14 h-14 rounded-full border-2 border-dashed border-[#5a3a2a] flex justify-center items-center text-[#5a3a2a] hover:text-[#e8d5b0] hover:border-[#e8d5b0] hover:bg-white/5 transition-colors shrink-0"
+            className="w-24 h-24 rounded-full border-[3px] border-dashed border-[#5a3a2a] flex justify-center items-center text-[#5a3a2a] hover:text-[#e8d5b0] hover:border-[#e8d5b0] hover:bg-white/5 transition-colors shrink-0"
           >
-            <Plus size={24} />
+            <Plus size={40} />
           </button>
           
           {/* THE ICONS MENU THAT OPENS WHEN YOU CLICK PLUS */}
@@ -128,7 +128,7 @@ export default function PatchGenerator() {
       
       <div 
         ref={patchRef}
-        className="w-[800px] h-[450px] relative flex flex-col"
+        className="w-[1280px] h-[720px] relative flex flex-col"
         style={{
           background: 'linear-gradient(135deg, #0a0202 0%, #150505 100%)',
           border: '2px solid #3a1a0a',
@@ -138,7 +138,7 @@ export default function PatchGenerator() {
       >
         <div className="absolute top-[-100px] left-[300px] w-[200px] h-[200px] bg-red-900/20 blur-[50px] pointer-events-none rounded-full overflow-hidden" />
         
-        <div className="px-10 py-5 border-b border-[#3a1a0a] flex justify-between items-center bg-black/50 z-10 shrink-0">
+        <div className="px-16 py-8 border-b border-[#3a1a0a] flex justify-between items-center bg-black/50 z-10 shrink-0">
           <div>
             <h1 contentEditable={true} suppressContentEditableWarning className="text-4xl text-[#e8d5b0] font-bold m-0 leading-none drop-shadow-[0_0_10px_rgba(200,0,0,0.3)] outline-none focus:bg-white/10 hover:bg-white/5 border border-transparent hover:border-white/20 rounded px-1" style={{ fontFamily: 'Cinzel, serif' }}>
               YAMA 1.2.1
@@ -177,7 +177,7 @@ export default function PatchGenerator() {
             />
             
             <div className="mt-auto">
-              <h3 className="text-[#e8d5b0] text-sm tracking-widest mb-4 flex items-center gap-2" style={{ fontFamily: 'Cinzel, serif' }}>
+              <h3 className="text-[#e8d5b0] text-xl tracking-widest mb-6 flex items-center gap-2" style={{ fontFamily: 'Cinzel, serif' }}>
                 <span className="text-blue-400 text-xl">✦</span> SİSTEM
               </h3>
               <div contentEditable={true} suppressContentEditableWarning className="bg-black/40 border border-[#3a1a0a] p-4 text-xs text-[#a89070] leading-relaxed outline-none focus:bg-white/10 hover:bg-white/5 rounded whitespace-pre-wrap">
