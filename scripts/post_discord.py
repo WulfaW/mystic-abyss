@@ -32,6 +32,9 @@ def send_discord_message(version, details=""):
                 "title": f"🚨 YENİ YAMA YAYINLANDI: {version}",
                 "description": f"Uçurum'a yeni bir güncelleme geldi! Sitemizi ziyaret ederek veya oyunu güncelleyerek yeniliklere göz atın.\n\n**Öne Çıkanlar:**\n{details}\n\n[Tüm Yama Geçmişini Gör](https://mystic-abyss.vercel.app/patch-notes) | [Oyunu İndir/Güncelle](https://arno4436.itch.io/the-mystic-abyys-2)",
                 "color": 12595200,
+                "image": {
+                    "url": "https://img.itch.zone/aW1nLzE2MDcwMTM2LnBuZw==/315x250%23c/4E19%2Bs.png"
+                },
                 "footer": {
                     "text": "Mystic Abyss II Online"
                 }
