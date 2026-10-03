@@ -19,9 +19,7 @@ Kullanıcı (User) sana yeni bir yama notu (patch notes) verdiğinde, aşağıda
 
 2. **Discord'a Duyur (Post to Discord):**
    Kullanıcının Discord sunucusuna otomatik duyuru atmalısın. Projede hazır bir script var.
-   Yama detaylarının en can alıcı noktalarını 3-4 maddelik (bullet point) bir özet haline getir (Örn: 
-- Yenilik 1
-- Yenilik 2).
+   Yama detaylarında kullanıcının sana verdiği TÜM maddeleri ve emojileri eksiksiz bir şekilde (hiçbir maddeyi silmeden ve özetlemeden) alt alta listele.
    Sonra terminalden şu komutu çalıştır: `python scripts/post_discord.py "v1.5" "Senin yazdığın 3-4 cümlelik kısa özet"`
    Script senin yerine gerekli Webhook ayarlarını `.env.local` dosyasından okuyup çok havalı bir Discord Embed mesajını kanala fırlatacaktır.
    Komutu çalıştırdıktan sonra kullanıcıya "Siteyi güncelledim ve Discord kanalına yama duyurusunu fırlattım patron!" diye rapor ver.
