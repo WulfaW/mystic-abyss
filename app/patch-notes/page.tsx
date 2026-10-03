@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { ChevronLeft } from 'lucide-react'
+import { ChevronLeft, Download } from 'lucide-react'
 import { 
   GiDaemonSkull, GiCrossbow, GiDungeonGate, 
   GiHarp, GiMagicSwirl, GiSoundWaves, GiTreasureMap,
