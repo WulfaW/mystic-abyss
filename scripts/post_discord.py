@@ -5,7 +5,6 @@ import urllib.request
 import urllib.error
 
 def get_webhook_url():
-    # .env.local dosyasını manuel olarak oku (ekstra paket kurmamak için)
     try:
         with open('.env.local', 'r', encoding='utf-8') as f:
             for line in f:
@@ -15,7 +14,19 @@ def get_webhook_url():
         pass
     return os.environ.get('DISCORD_WEBHOOK_URL')
 
+def get_role_id():
+    try:
+        with open('.env.local', 'r', encoding='utf-8') as f:
+            for line in f:
+                if line.startswith('DISCORD_PING_ROLE_ID='):
+                    return line.strip().split('=', 1)[1].strip(' "\'')
+    except FileNotFoundError:
+        pass
+    return os.environ.get('DISCORD_PING_ROLE_ID')
+
+
 WEBHOOK_URL = get_webhook_url()
+ROLE_ID = get_role_id()
 
 if not WEBHOOK_URL:
     print("HATA: DISCORD_WEBHOOK_URL bulunamadı!")
@@ -32,6 +43,7 @@ def send_discord_message(version, details=""):
     data = {
         "username": "Uçurumun Habercisi",
         "avatar_url": "https://img.itch.zone/aW1nLzE2MDcwMTM2LnBuZw==/315x250%23c/4E19%2Bs.png",
+        "content": f"<@&{ROLE_ID}>" if ROLE_ID else "",
         "embeds": [
             {
                 "title": f"🚨 YENİ YAMA YAYINLANDI: {version}",
@@ -67,8 +79,8 @@ if __name__ == "__main__":
     details = ""
     if len(sys.argv) > 2:
         details = sys.argv[2]
-        import os
         if os.path.isfile(details):
             with open(details, 'r', encoding='utf-8') as f:
                 details = f.read()
+                
     send_discord_message(version, details)
