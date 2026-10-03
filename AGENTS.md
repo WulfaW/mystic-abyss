@@ -18,6 +18,8 @@ Kullanıcı (User) sana yeni bir yama notu (patch notes) verdiğinde, aşağıda
    Yama notlarını alıp `app/patch-notes/page.tsx` içindeki `PATCHES` dizisine (array) en başa (veya en sona) uygun ikonlar ve renklerle (Riot Games stili) ekle. Dosyayı kaydet.
 
 2. **Discord'a Duyur (Post to Discord):**
-   Kullanıcının Discord sunucusuna otomatik mesaj atmalısın. Proje dizininde gizli bir `.env.local` dosyası bulunur ve içinde `DISCORD_WEBHOOK_URL` vardır.
-   Kullanıcı yama verdiğinde, yamanın özetini ve göze çarpan özelliklerini güzel bir Discord Embed (veya düz Markdown) formatında hazırlayıp Python (requests) veya curl kullanarak bu webhook adresine bir POST isteği at. 
-   Mesajı attıktan sonra kullanıcıya "Siteyi güncelledim ve Discord kanalına yama duyurusunu fırlattım patron!" diye rapor ver.
+   Kullanıcının Discord sunucusuna otomatik duyuru atmalısın. Projede hazır bir script var.
+   Yama detaylarının en can alıcı noktalarını 3-4 cümlelik bir özet haline getir.
+   Sonra terminalden şu komutu çalıştır: `python scripts/post_discord.py "v1.5" "Senin yazdığın 3-4 cümlelik kısa özet"`
+   Script senin yerine gerekli Webhook ayarlarını `.env.local` dosyasından okuyup çok havalı bir Discord Embed mesajını kanala fırlatacaktır.
+   Komutu çalıştırdıktan sonra kullanıcıya "Siteyi güncelledim ve Discord kanalına yama duyurusunu fırlattım patron!" diye rapor ver.
