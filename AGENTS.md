@@ -7,3 +7,17 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+
+# 🤖 MYSTIC ABYSS AI AGENT KURALLARI (AI AGENT WORKFLOWS)
+
+## 🚀 YAMA NOTLARI VE DISCORD OTOMASYONU (PATCH NOTES AUTOMATION)
+Kullanıcı (User) sana yeni bir yama notu (patch notes) verdiğinde, aşağıdaki 2 adımı **OTOMATİK OLARAK** arka arkaya yapmalısın. Asla kullanıcıya "Bunu Discord'a atayım mı?" diye sorma veya onun manuel yapmasını bekleme.
+
+1. **Siteyi Güncelle (Update Website):** 
+   Yama notlarını alıp `app/patch-notes/page.tsx` içindeki `PATCHES` dizisine (array) en başa (veya en sona) uygun ikonlar ve renklerle (Riot Games stili) ekle. Dosyayı kaydet.
+
+2. **Discord'a Duyur (Post to Discord):**
+   Kullanıcının Discord sunucusuna otomatik mesaj atmalısın. Proje dizininde gizli bir `.env.local` dosyası bulunur ve içinde `DISCORD_WEBHOOK_URL` vardır.
+   Kullanıcı yama verdiğinde, yamanın özetini ve göze çarpan özelliklerini güzel bir Discord Embed (veya düz Markdown) formatında hazırlayıp Python (requests) veya curl kullanarak bu webhook adresine bir POST isteği at. 
+   Mesajı attıktan sonra kullanıcıya "Siteyi güncelledim ve Discord kanalına yama duyurusunu fırlattım patron!" diye rapor ver.
