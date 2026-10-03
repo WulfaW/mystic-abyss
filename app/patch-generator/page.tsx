@@ -176,16 +176,14 @@ export default function PatchGenerator() {
               onRemoveItem={(id: number) => setAdjusts(adjusts.filter(a => a.id !== id))}
             />
             
-            <div className="mt-auto">
-              <h3 className="text-[#e8d5b0] text-xl tracking-widest mb-6 flex items-center gap-2" style={{ fontFamily: 'Cinzel, serif' }}>
-                <span className="text-blue-400 text-xl">✦</span> SİSTEM
-              </h3>
-              <div contentEditable={true} suppressContentEditableWarning className="bg-black/40 border border-[#3a1a0a] p-4 text-xs text-[#a89070] leading-relaxed outline-none focus:bg-white/10 hover:bg-white/5 rounded whitespace-pre-wrap">
-Müzik geçişleri yumuşatıldı.
-Uçurumun derinlikleri artık çok daha acımasız...
-              </div>
-            </div>
+            <Category 
+              title="YENİ" color="text-blue-400" icon={<GiMagicSwirl />} 
+              items={newItems} 
+              onAddItem={(iconIndex: number) => setNewItems([...newItems, { id: Date.now(), iconIndex, text: "" }])}
+              onRemoveItem={(id: number) => setNewItems(newItems.filter(n => n.id !== id))}
+            />
           </div>
+        </div>
         </div>
         
         <div className="absolute bottom-4 right-6 text-[9px] text-[#5a3a2a] tracking-widest pointer-events-none" style={{ fontFamily: 'Cinzel, serif' }}>
