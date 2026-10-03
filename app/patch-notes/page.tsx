@@ -537,8 +537,13 @@ export default function PatchNotes() {
                   <p className="text-[#8a7060] mt-3 tracking-widest uppercase text-sm">{patch.subtitle}</p>
                   
                   {patch.mandatory && (
-                    <div className="mt-6 inline-block bg-red-900/20 border border-red-900/50 text-red-400 px-4 py-2 rounded text-xs tracking-wider">
-                      <b>Zorunlu Güncelleme:</b> Eski sürümle bağlanamazsınız.
+                    <div className="mt-6 flex flex-wrap items-center gap-4">
+                      <div className="inline-block bg-red-900/20 border border-red-900/50 text-red-400 px-4 py-2 rounded text-xs tracking-wider">
+                        <b>Zorunlu Güncelleme:</b> Eski sürümle bağlanamazsınız.
+                      </div>
+                      <a href="https://arno4436.itch.io/the-mystic-abyys-2" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-[11px] font-bold py-2 px-5 uppercase bg-[#1a0a0a] hover:bg-[#3a1a0a] text-[#e8d5b0] transition-colors rounded border border-[#5a3a2a] shadow-[0_0_15px_rgba(0,0,0,0.8)] cursor-pointer">
+                        <Download size={16} /> Oyunu Güncelle
+                      </a>
                     </div>
                   )}
                 </div>
