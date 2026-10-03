@@ -55,9 +55,15 @@ def send_discord_message(version, details=""):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Kullanım: python scripts/post_discord.py \"v1.5\" \"Özet metin buraya...\"")
+        print("Kullanım: python scripts/post_discord.py \"v1.5\" \"Özet metin veya txt dosyası yolu\"")
         sys.exit(1)
         
     version = sys.argv[1]
-    details = sys.argv[2] if len(sys.argv) > 2 else ""
+    details = ""
+    if len(sys.argv) > 2:
+        details = sys.argv[2]
+        import os
+        if os.path.isfile(details):
+            with open(details, 'r', encoding='utf-8') as f:
+                details = f.read()
     send_discord_message(version, details)
