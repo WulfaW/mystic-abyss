@@ -11,10 +11,61 @@ import {
 
 const PATCHES = [
   {
+    id: 'v1.4',
+    title: 'YAMA 1.4',
+    subtitle: 'Mystic Abyss II 🔥',
+    date: 'EN YENİ GÜNCELLEME',
+    mandatory: true,
+    intro: 'Uçurum artık çok daha acımasız ve rekabetçi. Yeni seçkin yetenekleri, donmuş diyarlar ve küresel liderlik tablosuyla Mystic Abyss II yepyeni bir boyuta taşınıyor!',
+    sections: [
+      {
+        id: 'v1.4-dusmanlar',
+        title: 'SEÇKİN DÜŞMANLAR VE SAVAŞ 💀',
+        icon: GiDaemonSkull,
+        color: 'text-red-500',
+        items: [
+          '<strong class="text-[#e8d5b0]">Nitelikli Seçkinler:</strong> Seçkin düşmanlar artık özel niteliklerle doğuyor: <span class="italic text-[#c0392b]">Ateşli, Hızlı, Kalkanlı, Çağırıcı, Vampir, Işınlanan, Dondurucu.</span>',
+          '<strong class="text-[#e8d5b0]">Son Anlar Ekranı:</strong> Öldüğünüzde karşınıza yepyeni bir ekran çıkar. Sizi tam olarak neyin öldürdüğünü, ne kadar hasar aldığınızı gösterir ve hayatta kalmanız için ipuçları verir.',
+          '<strong class="text-[#e8d5b0]">Ping Sistemi:</strong> Orta tık veya (Z) tuşuna basarak bulunduğunuz yeri veya tehlikeleri takım arkadaşlarınıza işaretleyebilirsiniz.'
+        ]
+      },
+      {
+        id: 'v1.4-odalar',
+        title: 'YENİ ODA OLAYLARI VE ARENA 🌋',
+        icon: GiDungeonGate,
+        color: 'text-orange-500',
+        items: [
+          '<strong class="text-[#e8d5b0]">Oda Olayları:</strong> Odalara girdiğinizde rastgele gerçekleşebilecek yepyeni olaylar eklendi: <span class="italic">Kuşatma Odası, Zifiri Karanlık Oda, Kan Sunağı ve yakalaması zor Hazine Goblini!</span>',
+          '<strong class="text-[#e8d5b0]">Ateşli Arena:</strong> Muhafız arenaları artık savaşın 2. evresine geçildiğinde alev alev yanmaya başlıyor.'
+        ]
+      },
+      {
+        id: 'v1.4-icerikler',
+        title: 'EŞYALAR VE YENİ BÖLGELER ❄️',
+        icon: GiMagicSwirl,
+        color: 'text-blue-300',
+        items: [
+          '<strong class="text-[#e8d5b0]">Yeni Yuvalar:</strong> Karakterinize güç katacak <b>Yüzük</b> ve <b>Muska</b> (Amulet) takma yuvaları eklendi.',
+          '<strong class="text-[#e8d5b0]">Donmuş Taht:</strong> Sonsuz Uçurum moduna yepyeni ve dondurucu bir bölge eklendi. En derinde ise yeni muhafız <b>Donmuş Kral</b> sizi bekliyor.'
+        ]
+      },
+      {
+        id: 'v1.4-diger',
+        title: 'REKABET VE KÜRESEL 🌍',
+        icon: GiTreasureMap,
+        color: 'text-green-400',
+        items: [
+          '<strong class="text-[#e8d5b0]">Liderlik Tablosu:</strong> Artık hem oyun içinde hem de sitemizde kimin uçurumun en derinlerine indiğini gösteren bir Liderlik Tablosu var! Ayrıca <b>Haftalık Meydan Okumalar</b> ile sınırlarınızı zorlayın.',
+          '<strong class="text-[#e8d5b0]">İngilizce Dil Desteği:</strong> Oyun artık resmi olarak İngilizce dilini de destekliyor! (English language support!)'
+        ]
+      }
+    ]
+  },
+  {
     id: 'v1.3',
     title: 'YAMA 1.3',
     subtitle: 'Mystic Abyss II Online 💀',
-    date: 'Yeni Güncelleme',
+    date: 'Geçmiş Güncelleme',
     mandatory: true,
     intro: 'Karanlık giderek yoğunlaşıyor. Korozyon zihinleri daha hızlı çürütüyor, uçurumun diplerinden daha önce hiç görülmemiş kabuslar yüzeye çıkıyor. Hayatta kalmak artık sadece bir umut...',
     sections: [
