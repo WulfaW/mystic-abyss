@@ -11,10 +11,82 @@ import {
 
 const PATCHES = [
   {
+    id: 'v1.5',
+    title: 'YAMA 1.5',
+    subtitle: 'Mystic Abyss II ⚖️',
+    date: 'EN YENİ GÜNCELLEME',
+    mandatory: true,
+    intro: 'Uçurumun dengesi yeniden kuruldu. Ölüler ordusu dizginlendi, cinler efendisine mana taşıyor; oyundaki bütün modeller baştan elden geçti.',
+    sections: [
+      {
+        id: 'v1.5-denge',
+        title: 'SINIF DENGESİ ⚖️',
+        icon: GiBookAura,
+        color: 'text-purple-400',
+        items: [
+          'On sınıf aynı kat, seviye ve donanımla ölçüldü; üç sınıf buna göre ayarlandı.',
+          '<strong class="text-[#e8d5b0]">Nekromant zayıflatıldı 💀:</strong> İskeletler daha hafif ve daha seyrek vuruyor, aynı anda en fazla 4 iskelet (Lejyon ile 6), 20 saniye kalıyorlar.',
+          '<strong class="text-[#e8d5b0]">Ölüler Ordusu 💀:</strong> Artık 5 iskelet + golem çağırıyor; ulti sırasında ölenlerden en fazla 8 iskelet kalkıyor. Tırpan hasarı 12 → 11.',
+          '<strong class="text-[#e8d5b0]">Ulti döngüsü kırıldı 💀:</strong> Çağrılan yaratıkların vuruşları ultiyi artık üçte bir oranında dolduruyor. Eskiden ordu ultiyi, ulti yeni orduyu getiriyordu; derin katlarda ordu hiç bitmiyordu.',
+          '<strong class="text-[#e8d5b0]">Cinci güçlendirildi 📖:</strong> Cinlerin her isabeti mana getiriyor, Cin Çağır 22 → 18 mana, cinler 28 saniye kalıyor.',
+          '<strong class="text-[#e8d5b0]">Gölge Oku 📖:</strong> Daha hızlı ve daha iri (ıskalaması zor). Kara Kitap hasarı 10 → 11,5.',
+          '<strong class="text-[#e8d5b0]">Silahşör 🔫:</strong> Hasarı aynı. Tambur doldurma 1,5 → 1,3 saniye, mermiler daha hızlı sürülüyor, Ölüm Gözü hedefe daha çabuk kilitleniyor.'
+        ]
+      },
+      {
+        id: 'v1.5-tirpan',
+        title: 'NEKROMANTIN TIRPANI 🌙',
+        icon: GiSkeletalHand,
+        color: 'text-green-400',
+        items: [
+          '<strong class="text-[#e8d5b0]">Ekranı kaplamıyor:</strong> Sap sağda dik duruyor, ağız sola kıvrılıyor, nişangâhın önü açık.',
+          '<strong class="text-[#e8d5b0]">Yeni savuruş:</strong> Tırpan sağdan sola yatay biçiyor.',
+          '<strong class="text-[#e8d5b0]">Yeni model:</strong> Tek parça keskin ağız, sapta deri sargılar ve demir bilezikler.'
+        ]
+      },
+      {
+        id: 'v1.5-modeller',
+        title: 'MODELLER 🎨',
+        icon: GiDaemonSkull,
+        color: 'text-red-500',
+        items: [
+          'Oyundaki bütün modeller yeni bir kalite geçişinden geçti: düşmanlar, muhafızlar, kahramanlar, çağrılan yaratıklar, eşyalar ve eldeki silahlar.',
+          '<strong class="text-[#e8d5b0]">Yuvarlatılmış gövdeler:</strong> Köşeli kutu görüntüsü gitti; gövde, kafa, kol ve bacaklar yuvarlatıldı.',
+          '<strong class="text-[#e8d5b0]">Pürüzsüz gölge:</strong> Küre ve silindirler artık pürüzsüz gölgeleniyor.',
+          '<strong class="text-[#e8d5b0]">Temas gölgesi:</strong> Parçaların birbirine değdiği yerler koyulaşıyor.',
+          '<strong class="text-[#e8d5b0]">Parlayan metal:</strong> Çelik ve altın ışığı yansıtıyor; kumaş, deri ve kemik mat kalıyor.',
+          '<strong class="text-[#e8d5b0]">Kenar ışığı:</strong> Düşman ve kahramanların kenarında ince bir ışık çizgisi var; karanlıkta siluetleri seçiliyor.'
+        ]
+      },
+      {
+        id: 'v1.5-silah',
+        title: 'ELDEKİ SİLAH 🗡️',
+        icon: GiBroadsword,
+        color: 'text-[#a89070]',
+        items: [
+          '<strong class="text-[#e8d5b0]">Yeni ışık:</strong> Silahın ışığı yenilendi; Donmuş Taht\'ta soğuk tona dönüyor.',
+          '<strong class="text-[#e8d5b0]">Yeni ağızlar:</strong> Kılıç, hançer ve kısa kılıcın ağzı yeniden yapıldı (ortasında sırt ve oluk).',
+          '<strong class="text-[#e8d5b0]">Daha az yer kaplıyor:</strong> Asa, çekiç ve topuz küçültüldü: sap ekranı bölmüyor, başları görüş alanına giriyor.'
+        ]
+      },
+      {
+        id: 'v1.5-diger',
+        title: 'KAT ÖZETİ VE DÜZELTMELER 📊',
+        icon: GiTreasureMap,
+        color: 'text-blue-300',
+        items: [
+          '<strong class="text-[#e8d5b0]">Kat Özeti:</strong> Yeni kata inerken bir önceki katta verdiğiniz hasar, öldürme sayınız, en sert vuruşunuz, aldığınız hasar ve süreniz gösteriliyor.',
+          '<strong class="text-[#e8d5b0]">Dil düzeltmesi 🛠️:</strong> Türkçe seçiliyken oyun İngilizce görünüyordu, düzeltildi.',
+          '<strong class="text-[#e8d5b0]">Çökme düzeltmesi 🛠️:</strong> İngilizce modda oyun kapanırken çöküyordu, düzeltildi.'
+        ]
+      }
+    ]
+  },
+  {
     id: 'v1.4',
     title: 'YAMA 1.4',
     subtitle: 'Mystic Abyss II 🔥',
-    date: 'EN YENİ GÜNCELLEME',
+    date: 'Geçmiş Güncelleme',
     mandatory: true,
     intro: 'Uçurum artık çok daha acımasız ve rekabetçi. Yeni seçkin yetenekleri, donmuş diyarlar ve küresel liderlik tablosuyla Mystic Abyss II yepyeni bir boyuta taşınıyor!',
     sections: [

@@ -184,7 +184,6 @@ export default function PatchGenerator() {
             />
           </div>
         </div>
-        </div>
         
         <div className="absolute bottom-4 right-6 text-[9px] text-[#5a3a2a] tracking-widest pointer-events-none" style={{ fontFamily: 'Cinzel, serif' }}>
           MYSTIC-ABYSS.COM
