@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { ChevronDown, ChevronUp, Download, Swords, Users, Skull, Zap } from 'lucide-react'
 import { GiBroadsword, GiDaggers, GiSpellBook, GiHolySymbol, GiShield, GiBowArrow, GiHarp, GiMusket, GiDaemonSkull } from 'react-icons/gi'
 import { motion } from 'framer-motion'
+import ChainPanel from './chain-panel'
 
 const itchUrl = 'https://arno4436.itch.io/the-mystic-abyys-2'
 
@@ -264,7 +265,7 @@ export default function Page() {
       </nav>
 
       {/* ── HERO ── */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4"
+      <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 pt-44 pb-16"
         style={{
           backgroundImage: 'url("/hero-bg.jpg")',
           backgroundSize: 'cover',
@@ -278,12 +279,7 @@ export default function Page() {
           background: 'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(150,0,0,0.2) 0%, transparent 80%)',
         }} />
 
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="relative z-10 max-w-4xl mx-auto"
-        >
+        <ChainPanel className="relative z-10 max-w-4xl mx-auto">
           <p className="text-xs tracking-[0.5em] uppercase mb-4" style={{ fontFamily: 'Cinzel, serif', color: '#8a6a3a' }}>
             — Online Co-op Dungeon Roguelike —
           </p>
@@ -320,7 +316,7 @@ export default function Page() {
               Mystic Abyss II'ye Yeni mi Başlıyorsun? ↓
             </a>
           </div>
-        </motion.div>
+        </ChainPanel>
 
         {/* Aşağı kaydır */}
         <motion.div 
